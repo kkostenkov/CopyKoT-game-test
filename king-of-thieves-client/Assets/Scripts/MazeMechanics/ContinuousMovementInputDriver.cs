@@ -7,12 +7,18 @@ public class ContinuousMovementInputDriver : BaseInputDriver
     private BasicMovementController2D movementController;
 
     private Vector2 horizontalMovement = Vector2.right;
-    private bool isWallSliding;
+    private bool couldChangeDirection;
+    private IInput input;
 
     private void Awake()
     {
         movementController.OnWallSliding += OnWallSlide;
         movementController.OnWallSlidingEnd += OnWallSlideEnd;
+    }
+
+    private void Start()
+    {
+        this.input = DI.Game.Resolve<IInput>();
     }
 
     private void Update()
@@ -28,27 +34,24 @@ public class ContinuousMovementInputDriver : BaseInputDriver
 
     private void OnWallSlideEnd()
     {
-        this.isWallSliding = false;
+        this.couldChangeDirection = false;
     }
 
     private void OnWallSlide(int obj)
     {
-        this.isWallSliding = true;
+        this.couldChangeDirection = true;
     }
 
     public override void UpdateInput(float timeStep)
     {
-        var isJumpPressed = Input.GetButtonDown("Jump");
+        var isJumpPressed = input.IsJumpRequested;
         Jump = isJumpPressed;
         
-        if (isJumpPressed && this.isWallSliding) {
+        if (isJumpPressed && this.couldChangeDirection) {
             InvertHorizontalMovementDirection();
         }
-
+        
         Horizontal = this.horizontalMovement.x;
-
-        HoldingJump = Input.GetButton("Jump");
-        ReleaseJump = Input.GetButtonUp("Jump");
     }
 
     private void InvertHorizontalMovementDirection()
