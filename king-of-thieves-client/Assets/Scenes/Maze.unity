@@ -785,14 +785,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 1080167269, guid: 6be191ac76bc9954296ca1703d4a1084, type: 3}
-      propertyPath: m_CollisionLayer.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1080167270, guid: 6be191ac76bc9954296ca1703d4a1084, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1080167270, guid: 6be191ac76bc9954296ca1703d4a1084, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.4
@@ -1208,10 +1200,6 @@ PrefabInstance:
     - target: {fileID: 1217944367261652936, guid: d84bd9bb6140f425e855c7dd0e94c3f3, type: 3}
       propertyPath: m_Name
       value: Collectable
-      objectReference: {fileID: 0}
-    - target: {fileID: 1217944367261652936, guid: d84bd9bb6140f425e855c7dd0e94c3f3, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2059560620394137494, guid: d84bd9bb6140f425e855c7dd0e94c3f3, type: 3}
       propertyPath: m_LocalPosition.x
