@@ -1,0 +1,17 @@
+{
+    "name": "PlatformerHunter.Examples",
+    "rootNamespace": "",
+    "references": [
+        "PlatformerHunter-Core",
+        "PlatformerHunter-EasingPack"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
