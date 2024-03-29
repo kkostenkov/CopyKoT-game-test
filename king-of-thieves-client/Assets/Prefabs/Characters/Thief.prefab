@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4254494959962940}
   - component: {fileID: 212301338442792472}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 114368022569154642}
   - component: {fileID: 114043337497974322}
   - component: {fileID: 95095399055848442}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Thief
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -261,8 +261,8 @@ MonoBehaviour:
     CanWallSlide: 1
     WallStickTime: 0.15
     WallStickTimer: 0
-    WallSlideSpeedLoss: 0.05
-    WallSlidingSpeedMax: 2
+    WallSlideSpeedLoss: 0.1
+    WallSlidingSpeedMax: 5
     CanWallClimb: 0
     WallClimbSpeed: 2
     CanWallJump: 1
@@ -273,7 +273,7 @@ MonoBehaviour:
     LedgeDetectionOffset: 0.1
     WallDirX: 0
   m_Dash:
-    Module: {fileID: 11400000, guid: 306b38766d9ec4c4f90f833d5be3dc83, type: 2}
+    Module: {fileID: 0}
   m_CustomAction:
     Module: {fileID: 0}
 --- !u!114 &114368022569154642
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4204557321351522}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
