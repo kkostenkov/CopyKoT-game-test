@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 114797820185099922}
   - component: {fileID: 114486199799211510}
   - component: {fileID: 114368022569154642}
-  - component: {fileID: 114043337497974322}
+  - component: {fileID: 5990859079779576226}
   - component: {fileID: 95095399055848442}
   m_Layer: 7
   m_Name: Thief
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Appearance: {fileID: 4204557321351522}
   m_Animtor: {fileID: 95095399055848442}
---- !u!114 &114043337497974322
+--- !u!114 &5990859079779576226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,9 +299,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561394120766814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f810d1adc587e71499145a8a8c6bebe9, type: 3}
+  m_Script: {fileID: 11500000, guid: 17caf94e6a4374f6b81e2bd55795d71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementController: {fileID: 114486199799211510}
 --- !u!95 &95095399055848442
 Animator:
   serializedVersion: 5
