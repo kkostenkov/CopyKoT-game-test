@@ -4,7 +4,7 @@ using UnityEngine;
 public class ContinuousMovementInputDriver : BaseInputDriver
 {
     [SerializeField]
-    private BasicMovementController2D movementController;
+    private BaseMovementController movementController;
 
     private Vector2 horizontalMovement = Vector2.right;
     private bool couldChangeDirection;

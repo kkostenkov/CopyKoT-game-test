@@ -36,6 +36,8 @@ public class MazeDiBootstrap : MonoBehaviour
         DI.CreateGameContainer();
         DI.Game.Register<IInput, InputBridge>().AsSingleton();
         DI.Game.Register<LevelTimer>().AsSingleton();
+        DI.Game.Register<LevelStateDispatcher>().AsSingleton();
+        DI.Game.Register<ILevelStateInfoProvider>((c, p) => c.Resolve<LevelStateDispatcher>());
     }
 
     private void RegisterMonobehListeners()
