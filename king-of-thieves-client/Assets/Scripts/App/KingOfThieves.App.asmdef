@@ -1,10 +1,7 @@
 {
-    "name": "KingOfThieves.MazeMechanics",
-    "rootNamespace": "MazeMechanics",
+    "name": "KingOfThieves.App",
+    "rootNamespace": "",
     "references": [
-        "PlatformerHunter-Core",
-        "PlatformerHunter.Examples",
-        "KingOfThieves.App",
         "TinyIoC"
     ],
     "includePlatforms": [],
