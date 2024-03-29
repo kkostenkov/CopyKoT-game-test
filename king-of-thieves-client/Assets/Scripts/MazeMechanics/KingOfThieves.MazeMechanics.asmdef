@@ -1,7 +1,7 @@
 {
     "name": "KingOfThieves.MazeMechanics",
     "rootNamespace": "MazeMechanics",
-    "references": ["GUID:04a8ccec6f1774cb1b32cff869985dfe"],
+    "references": ["GUID:04a8ccec6f1774cb1b32cff869985dfe","GUID:9cba17126ba8b45eab4fbb6d2de31a6a"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

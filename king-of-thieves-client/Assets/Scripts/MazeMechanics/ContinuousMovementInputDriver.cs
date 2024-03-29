@@ -6,7 +6,7 @@ public class ContinuousMovementInputDriver : BaseInputDriver
     [SerializeField]
     private BasicMovementController2D movementController;
 
-    private float horizontalMovement = 1;
+    private Vector2 horizontalMovement = Vector2.right;
     private bool isWallSliding;
 
     private void Awake()
@@ -45,7 +45,7 @@ public class ContinuousMovementInputDriver : BaseInputDriver
             InvertHorizontalMovementDirection();
         }
 
-        Horizontal = this.horizontalMovement;
+        Horizontal = this.horizontalMovement.x;
 
         HoldingJump = Input.GetButton("Jump");
         ReleaseJump = Input.GetButtonUp("Jump");

@@ -14,9 +14,9 @@ public class AdventurerAnimationController : MonoBehaviour
     private SpriteRenderer m_SpriteRenderer;
 
     [SerializeField]
-    private Animator m_Animtor;
+    protected Animator m_Animtor;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         m_Controller = GetComponent<BasicMovementController2D>();
 
@@ -35,7 +35,7 @@ public class AdventurerAnimationController : MonoBehaviour
         m_Controller.OnWallSlidingEnd += onWallSlidingEnd;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (Mathf.Abs(m_Controller.InputVelocity.x) > 0.0f)
             m_Animtor.SetFloat("SpeedX", 1.0f);

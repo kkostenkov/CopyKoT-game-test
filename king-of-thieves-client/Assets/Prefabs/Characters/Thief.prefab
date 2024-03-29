@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 114911783089831038}
   - component: {fileID: 114797820185099922}
   - component: {fileID: 114486199799211510}
-  - component: {fileID: 114368022569154642}
+  - component: {fileID: 7994964276656510943}
   - component: {fileID: 5990859079779576226}
   - component: {fileID: 95095399055848442}
   m_Layer: 7
@@ -256,7 +256,7 @@ MonoBehaviour:
     TimeToApex: 0.35
     OnLadderJumpForce: 0.4
     FallingJumpPaddingTime: 0.2
-    WillJumpPaddingTime: 0.01
+    WillJumpPaddingTime: 0.005
   m_WallInteraction:
     CanWallSlide: 1
     WallStickTime: 0.15
@@ -268,7 +268,7 @@ MonoBehaviour:
     CanWallJump: 1
     ClimbForce: {x: 12, y: 16}
     OffForce: {x: 8, y: 15}
-    LeapForce: {x: 18, y: 17}
+    LeapForce: {x: 30, y: 17}
     CanGrabLedge: 0
     LedgeDetectionOffset: 0.1
     WallDirX: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
     Module: {fileID: 0}
   m_CustomAction:
     Module: {fileID: 0}
---- !u!114 &114368022569154642
+--- !u!114 &7994964276656510943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561394120766814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09acb41e7f27a184096f008dc89a9d6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7566d4256d28d4b45988854b31845190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Appearance: {fileID: 4204557321351522}
