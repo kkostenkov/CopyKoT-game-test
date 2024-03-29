@@ -2581,18 +2581,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114486199799211510, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
-      propertyPath: m_Jump.MaxHeight
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114486199799211510, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
-      propertyPath: m_Jump.MinHeight
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114486199799211510, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
-      propertyPath: m_Jump.TimeToApex
-      value: 0.35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
