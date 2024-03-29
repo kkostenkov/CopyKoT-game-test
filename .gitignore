@@ -71,8 +71,5 @@ king-of-thieves-client/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 king-of-thieves-client/[Aa]ssets/[Ss]treamingAssets/aa.meta
 king-of-thieves-client/[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Rider
-.idea/
-
 # MacOs
 .DS_Store
