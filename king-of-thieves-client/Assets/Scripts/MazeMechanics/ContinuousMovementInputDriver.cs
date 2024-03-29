@@ -12,8 +12,8 @@ public class ContinuousMovementInputDriver : BaseInputDriver
 
     private void Awake()
     {
-        movementController.OnWallSliding += OnWallSlide;
-        movementController.OnWallSlidingEnd += OnWallSlideEnd;
+        movementController.WallSliding += WallSlide;
+        movementController.WallSlided += WallSlideEnd;
     }
 
     private void Start()
@@ -28,16 +28,16 @@ public class ContinuousMovementInputDriver : BaseInputDriver
 
     private void OnDestroy()
     {
-        movementController.OnWallSliding -= OnWallSlide;
-        movementController.OnWallSlidingEnd -= OnWallSlideEnd;
+        movementController.WallSliding -= WallSlide;
+        movementController.WallSlided -= WallSlideEnd;
     }
 
-    private void OnWallSlideEnd()
+    private void WallSlideEnd()
     {
         this.couldChangeDirection = false;
     }
 
-    private void OnWallSlide(int obj)
+    private void WallSlide(int obj)
     {
         this.couldChangeDirection = true;
     }

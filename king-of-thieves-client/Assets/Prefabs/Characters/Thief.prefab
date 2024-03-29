@@ -288,8 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7566d4256d28d4b45988854b31845190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Appearance: {fileID: 4204557321351522}
-  m_Animtor: {fileID: 95095399055848442}
+  appearance: {fileID: 4204557321351522}
+  animator: {fileID: 95095399055848442}
+  movementController: {fileID: 3466813756490948523}
+  motor: {fileID: 114797820185099922}
 --- !u!114 &5990859079779576226
 MonoBehaviour:
   m_ObjectHideFlags: 0
