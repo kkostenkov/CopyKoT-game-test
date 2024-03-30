@@ -13,9 +13,14 @@ namespace MazeMechanics
     
         void IUpdatable.Update()
         {
+            if (!this.isActive) {
+                return;
+            }
+            
             this.secondsLeft -= Time.deltaTime;
             if (this.secondsLeft <= 0) {
                 StopAndReset();
+                Debug.Log("Level timer expired");
                 this.Expired?.Invoke();
             }
         }
@@ -24,6 +29,7 @@ namespace MazeMechanics
         {
             this.secondsLeft = this.levelTimeLimitSeconds;
             this.isActive = true;
+            Debug.Log("Level timer started");
         }
 
         private void StopAndReset()

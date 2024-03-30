@@ -47,7 +47,6 @@ namespace MazeMechanics
         private void OnLevelTimeEnded()
         {
             this.timer.Expired -= OnLevelTimeEnded;
-            Debug.Log("Level timer expired");
             StopLevel();
         }
     }
