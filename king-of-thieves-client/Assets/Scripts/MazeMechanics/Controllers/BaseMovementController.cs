@@ -121,21 +121,30 @@ namespace Controllers
 
         // Condition
         public Func<bool> CanAirJumpFunc = null;
+        private ILevelStateInfoProvider levelInfo;
 
 #region Monobehaviour
     
         private void Start()
         {
+            this.levelInfo = DI.Game.Resolve<ILevelStateInfoProvider>();
             Init();
         }
 
         private void FixedUpdate()
         {
+            if (this.levelInfo.CurrentState != LevelState.Action) {
+                return;
+            }
+            
             RunControllerCycle(Time.fixedDeltaTime);
         }
 
         private void Update()
         {
+            if (this.levelInfo.CurrentState != LevelState.Action) {
+                return;
+            }
             ReadInput(Time.deltaTime);
         }
 
