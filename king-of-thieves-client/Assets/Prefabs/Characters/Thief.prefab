@@ -270,13 +270,13 @@ MonoBehaviour:
     CanWallJump: 1
     ClimbForce: {x: 12, y: 16}
     OffForce: {x: 8, y: 15}
-    LeapForce: {x: 30, y: 17}
+    LeapForce: {x: 12, y: 17}
     CanGrabLedge: 0
     LedgeDetectionOffset: 0.1
     WallDirX: 0
-  dashSettings:
+  dashModule:
     Module: {fileID: 0}
-  customAction:
+  customActionModule:
     Module: {fileID: 0}
 --- !u!114 &7994964276656510943
 MonoBehaviour:
