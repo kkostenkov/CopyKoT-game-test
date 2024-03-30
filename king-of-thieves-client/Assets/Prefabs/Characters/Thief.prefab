@@ -239,16 +239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f73834486984ac1a44fb4122a49797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSettings:
+  motor: {fileID: 114797820185099922}
+  inputDriver: {fileID: 5990859079779576226}
+  movementSettings:
     Speed: 8
     AccelerationTimeAirborne: 0.1
     AccelerationTimeGrounded: 0.1
-  m_OnLadderSettings:
+  ladderInteractionSettings:
     SnapToRestrictedArea: 0
     ExitLadderOnGround: 1
     OnLadderSpeed: 4
     LockFacingToRight: 1
-  m_Jump:
+  jumpSettings:
     HasVariableJumpHeight: 1
     AirJumpAllowed: 0
     MaxHeight: 2.7
@@ -257,7 +259,7 @@ MonoBehaviour:
     OnLadderJumpForce: 0.4
     FallingJumpPaddingTime: 0.2
     WillJumpPaddingTime: 0.005
-  m_WallInteraction:
+  wallInteractionSettings:
     CanWallSlide: 1
     WallStickTime: 0.15
     WallStickTimer: 0
@@ -272,9 +274,9 @@ MonoBehaviour:
     CanGrabLedge: 0
     LedgeDetectionOffset: 0.1
     WallDirX: 0
-  m_Dash:
+  dashSettings:
     Module: {fileID: 0}
-  m_CustomAction:
+  customAction:
     Module: {fileID: 0}
 --- !u!114 &7994964276656510943
 MonoBehaviour:

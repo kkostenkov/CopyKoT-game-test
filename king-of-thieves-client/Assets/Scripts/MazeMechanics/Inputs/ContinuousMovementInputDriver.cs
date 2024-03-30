@@ -1,4 +1,5 @@
-﻿using DYP;
+﻿using Controllers;
+using DYP;
 using UnityEngine;
 
 namespace Inputs
@@ -14,8 +15,8 @@ namespace Inputs
 
         private void Awake()
         {
-            this.movementController.WallSliding += WallSlide;
-            this.movementController.WallSlided += WallSlideEnd;
+            this.movementController.WallSliding += OnWallSliding;
+            this.movementController.WallSlided += OnWallSlideEnded;
         }
 
         private void Start()
@@ -30,16 +31,16 @@ namespace Inputs
 
         private void OnDestroy()
         {
-            this.movementController.WallSliding -= WallSlide;
-            this.movementController.WallSlided -= WallSlideEnd;
+            this.movementController.WallSliding -= OnWallSliding;
+            this.movementController.WallSlided -= OnWallSlideEnded;
         }
 
-        private void WallSlideEnd()
+        private void OnWallSlideEnded()
         {
             this.couldChangeDirection = false;
         }
 
-        private void WallSlide(int obj)
+        private void OnWallSliding(int direction)
         {
             this.couldChangeDirection = true;
         }
