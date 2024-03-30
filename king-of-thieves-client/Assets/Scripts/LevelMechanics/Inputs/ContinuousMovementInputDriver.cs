@@ -10,13 +10,11 @@ namespace Inputs
         private BaseMovementController movementController;
 
         private Vector2 horizontalMovement = Vector2.right;
-        private bool couldChangeDirection;
         private IInput input;
 
         private void Awake()
         {
-            this.movementController.WallSliding += OnWallSliding;
-            this.movementController.WallSlided += OnWallSlideEnded;
+            this.movementController.WallJumpExecuted += OnWallJumpExecuted;
         }
 
         private void Start()
@@ -31,29 +29,19 @@ namespace Inputs
 
         private void OnDestroy()
         {
-            this.movementController.WallSliding -= OnWallSliding;
-            this.movementController.WallSlided -= OnWallSlideEnded;
+            this.movementController.WallJumpExecuted -= OnWallJumpExecuted;
         }
 
-        private void OnWallSlideEnded()
+        private void OnWallJumpExecuted(Vector2 obj)
         {
-            this.couldChangeDirection = false;
-        }
-
-        private void OnWallSliding(int direction)
-        {
-            this.couldChangeDirection = true;
+            InvertHorizontalMovementDirection();
         }
 
         public override void UpdateInput(float timeStep)
         {
             var isJumpPressed = this.input.IsJumpRequested;
             Jump = isJumpPressed;
-        
-            if (isJumpPressed && this.couldChangeDirection) {
-                InvertHorizontalMovementDirection();
-            }
-        
+            
             Horizontal = this.horizontalMovement.x;
         }
 
