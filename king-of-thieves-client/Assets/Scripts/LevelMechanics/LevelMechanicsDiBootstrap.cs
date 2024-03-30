@@ -25,13 +25,13 @@ namespace MazeMechanics
             DI.Game.Register<MazeCellPresenter>();
             DI.Game.Register<ICollectablePresenterFactory, CollectableManager>();
             
-            DI.Game.Register<CollectableTimeout>().AsSingleton();
+            DI.Game.Register<CollectableRefresher>().AsSingleton();
         }
 
         private void RegisterMonobehListeners()
         {
             this.monoBehMethods.Register(DI.Game.Resolve<LevelTimer>());
-            this.monoBehMethods.Register(DI.Game.Resolve<CollectableTimeout>());
+            this.monoBehMethods.Register(DI.Game.Resolve<CollectableRefresher>());
         }
     }
 }

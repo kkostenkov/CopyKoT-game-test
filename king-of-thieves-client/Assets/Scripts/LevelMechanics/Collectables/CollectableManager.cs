@@ -6,12 +6,14 @@ namespace MazeMechanics
     internal class CollectableManager : ICollectablePresenterFactory
     {
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
-        private readonly CollectableTimeout delayer;
+        private readonly CollectableRefresher refresher;
 
-        public CollectableManager(CollectableTimeout delayer)
+        private int collectedCoins = 0;
+
+        public CollectableManager(CollectableRefresher refresher)
         {
-            this.delayer = delayer;
-            this.delayer.TimedOut += OnPresenterTimedOut;
+            this.refresher = refresher;
+            this.refresher.Refreshed += OnCollectableRefreshed;
         }
 
         public CollectablePresenter GetPresenter(MazeCellModel model)
@@ -24,13 +26,21 @@ namespace MazeMechanics
 
         private void OnCollected(CollectablePresenter presenter, int coins)
         {
-            // score
-            Debug.Log($"Collected {coins} coins");
-            // schedule refresh
-            this.delayer.Schedule(presenter);
+            Score(coins);
+            ScheduleRefresh(presenter);
         }
 
-        private void OnPresenterTimedOut(CollectablePresenter presenter)
+        private void ScheduleRefresh(CollectablePresenter presenter)
+        {
+            this.refresher.Schedule(presenter);
+        }
+
+        private void Score(int coins)
+        {
+            this.collectedCoins += coins;
+        }
+
+        private void OnCollectableRefreshed(CollectablePresenter presenter)
         {
             presenter.Model.CoinValue = 1;
             presenter.UpdateView();

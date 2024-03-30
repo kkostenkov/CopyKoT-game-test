@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MazeMechanics
 {
-    internal class CollectableTimeout : IUpdatable
+    internal class CollectableRefresher : IUpdatable
     {
-        public event Action<CollectablePresenter> TimedOut;
+        public event Action<CollectablePresenter> Refreshed;
         
         private readonly List<WaitingPresenter> waitingPresenters = new();
         private readonly Random rand = new Random();
@@ -25,7 +25,7 @@ namespace MazeMechanics
                 var entry = this.waitingPresenters[i];
                 if (DateTime.UtcNow >= entry.DueDate) {
                     waitingPresenters.RemoveAt(i);
-                    TimedOut?.Invoke(entry.Presenter);
+                    this.Refreshed?.Invoke(entry.Presenter);
                 }
             }
         }

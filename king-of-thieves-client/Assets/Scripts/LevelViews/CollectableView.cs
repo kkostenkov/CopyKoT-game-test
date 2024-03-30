@@ -19,7 +19,6 @@ namespace Views
 
         public void OnTriggerStay2D(Collider2D col)
         {
-            Debug.Log("InCollectable trigger");
             Touched?.Invoke();
         }
 
