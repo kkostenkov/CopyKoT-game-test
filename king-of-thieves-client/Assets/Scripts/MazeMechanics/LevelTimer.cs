@@ -7,7 +7,7 @@ namespace MazeMechanics
     {
         public event Action Expired;
 
-        private float levelTimeLimitSeconds = 5;
+        private float levelTimeLimitSeconds = 50;
         private float secondsLeft = -1;
         private bool isActive;
     
