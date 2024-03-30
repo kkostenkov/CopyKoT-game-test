@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class BaseCollectableController : MonoBehaviour
+namespace Controllers
 {
-    public void OnTriggerStay2D(Collider2D col)
+    public class BaseCollectableController : MonoBehaviour
     {
-        Debug.Log("InCollectable trigger");
-        gameObject.SetActive(false);
+        public void OnTriggerStay2D(Collider2D col)
+        {
+            Debug.Log("InCollectable trigger");
+            gameObject.SetActive(false);
+        }
     }
 }

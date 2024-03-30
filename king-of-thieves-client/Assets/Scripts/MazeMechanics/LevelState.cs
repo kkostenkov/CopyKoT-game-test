@@ -1,6 +1,9 @@
-public enum LevelState
+namespace MazeMechanics
 {
-    Unknown,
-    Action,
-    TimeIsUp
+    public enum LevelState
+    {
+        Unknown,
+        Action,
+        TimeIsUp
+    }
 }

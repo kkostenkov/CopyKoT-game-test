@@ -1,26 +1,28 @@
 using System.Threading.Tasks;
+using MazeMechanics.Cells;
 using UnityEngine;
 
-namespace MazeMechanics.Cells
+namespace Views
 {
-    public class MazeCellView : MonoBehaviour
+    public class MazeCellView : MonoBehaviour, IMazeCellView
     {
         [SerializeField]
         private SpriteRenderer spriteRenderer;
+
         [SerializeField]
         private BoxCollider2D cellCollider;
 
         public Task DrawPassable()
         {
-            spriteRenderer.enabled = false;
-            cellCollider.enabled = false;
+            this.spriteRenderer.enabled = false;
+            this.cellCollider.enabled = false;
             return Task.CompletedTask;
         }
 
         public Task DrawImpassable()
         {
-            spriteRenderer.enabled = true;
-            cellCollider.enabled = true;
+            this.spriteRenderer.enabled = true;
+            this.cellCollider.enabled = true;
             return Task.CompletedTask;
         }
     }

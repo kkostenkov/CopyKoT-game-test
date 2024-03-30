@@ -1,32 +1,45 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MazeMechanics.Cells;
-using UnityEngine;
+using Random = System.Random;
 
 namespace MazeMechanics
 {
-    public class DraftCellController : MonoBehaviour
+    public class DraftCellController
     {
-        [SerializeField]
-        private List<MazeCellView> cells;
-        [SerializeField]
         private int seed = 48;
-        
-        private async Task Awake()
+        private int cellsToSpawn = 28;
+        private List<MazeCellPresenter> cellPresenters;
+
+        public Task SpawnCells()
         {
-            await DrawMazeCells();
+            return InitMazeCellsAsync();
         }
 
-        private async Task DrawMazeCells()
+        private async Task InitMazeCellsAsync()
         {
-            var rand = new System.Random(this.seed);
-            var drawCellTask = this.cells[0].DrawPassable();
-            await drawCellTask;
-            for (var index = 1; index < this.cells.Count; index++) {
-                var cell = this.cells[index]; 
-                drawCellTask = rand.Next() % 2 == 0 ? cell.DrawPassable() : cell.DrawImpassable();
-                await drawCellTask;
+            var rand = new Random(this.seed);
+            var mazeCellModel = new MazeCellModel {
+                Id = 0,
+                IsPassable = true
+            };
+            var presenter = DI.Game.Resolve<MazeCellPresenter>();
+            var initCallTask = presenter.Initialize(mazeCellModel);
+            await initCallTask;
+            for (var index = 1; index < cellsToSpawn; index++) {
+                initCallTask = CreateCellAsync(index, rand);
+                await initCallTask;
             }
+        }
+
+        private static Task CreateCellAsync(int index, Random rand)
+        {
+            var mazeCellModel = new MazeCellModel {
+                Id = index,
+                IsPassable = rand.Next() % 2 == 0
+            };
+            var presenter = DI.Game.Resolve<MazeCellPresenter>();
+            var initCallTask = presenter.Initialize(mazeCellModel);
+            return initCallTask;
         }
     }
 }
