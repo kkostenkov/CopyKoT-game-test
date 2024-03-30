@@ -18,7 +18,7 @@ namespace MazeMechanics
 
         public Task Initialize(MazeCellModel mazeCellModel)
         {
-            this.view = factory.GetView();
+            this.view = factory.GetView(mazeCellModel);
             this.model = mazeCellModel;
             Task initTask;
             if (this.model.IsPassable) {

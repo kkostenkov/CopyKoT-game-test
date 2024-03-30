@@ -5,12 +5,12 @@ namespace Views
 {
     public class CollectibleViewFactory : MonoBehaviour, ICollectibleViewFactory
     {
-        // [SerializeField]
-        // private CollectibleView collectibleViewPrefab;
+        [SerializeField]
+        private CollectableView collectibleViewPrefab;
     
         public ICollectibleView GetView()
         {
-            return null;
+            return GameObject.Instantiate(collectibleViewPrefab);
         }
     }
 }

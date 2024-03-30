@@ -11,11 +11,24 @@ namespace Views
 
         [SerializeField]
         private Transform root;
-    
-        public IMazeCellView GetView()
+
+        private ICollectibleViewFactory collectibleViewFactory;
+
+        public void Inject(ICollectibleViewFactory collectibleViewFactory)
         {
-            var instance = Instantiate(this.viewPrefab, this.root);
-            return instance;
+            this.collectibleViewFactory = collectibleViewFactory;
+        }
+    
+        public IMazeCellView GetView(MazeCellModel model)
+        {
+            var mazeCell = Instantiate(this.viewPrefab, this.root);
+            mazeCell.name = $"Cell_{model.Id}";
+            if (model.IsPassable) {
+                this.collectibleViewFactory = DI.Game.Resolve<ICollectibleViewFactory>();
+                var collectible = this.collectibleViewFactory.GetView();
+                collectible.Place(mazeCell.transform);
+            }
+            return mazeCell;
         }
     }
 }

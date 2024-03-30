@@ -4,6 +4,6 @@ namespace MazeMechanics
 {
     public interface IMazeCellViewFactory
     {
-        IMazeCellView GetView();
+        IMazeCellView GetView(MazeCellModel model);
     }
 }

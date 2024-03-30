@@ -6,9 +6,8 @@ namespace MazeMechanics
     {
         private ICollectibleView view;
 
-        public CollectablePresenter(ICollectibleViewFactory factory)
+        public CollectablePresenter()
         {
-            this.view = factory.GetView();
         }
 
         public Task Spawn()
