@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MazeMechanics
 {
-    internal class LevelTimer : IUpdatable
+    public class LevelTimer : IUpdatable
     {
         public event Action Expired;
 

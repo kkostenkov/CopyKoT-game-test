@@ -22,6 +22,8 @@ namespace Views
         
             DI.Game.Register<ICollectibleViewFactory, CollectibleViewFactory>(this.collectibleFactory);
             DI.Game.Register<IMazeCellViewFactory, MazeCellViewFactory>(this.mazeCellFactory);
+            
+            var presenter = DI.Game.Resolve<MazeCellPresenter>();
         
             this.monoBehMethods.Awake();
         }

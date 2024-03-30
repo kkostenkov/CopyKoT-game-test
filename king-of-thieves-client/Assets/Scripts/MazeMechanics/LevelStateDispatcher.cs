@@ -2,7 +2,7 @@ using System;
 
 namespace MazeMechanics
 {
-    internal class LevelStateDispatcher : ILevelStateInfoProvider
+    public class LevelStateDispatcher : ILevelStateInfoProvider
     {
         public event Action<LevelState, LevelState> LevelStateChanged;
         public LevelState CurrentState { get; private set; } = LevelState.Unknown;

@@ -10,7 +10,7 @@ namespace Views
     
         public ICollectibleView GetView()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
     }
 }

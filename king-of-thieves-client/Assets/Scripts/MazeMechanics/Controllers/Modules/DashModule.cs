@@ -3,7 +3,7 @@ using DYP;
 namespace Controllers.Modules
 {
     [System.Serializable]
-    internal class DashModule
+    public class DashModule
     {
         public BaseDashModule Module;
 

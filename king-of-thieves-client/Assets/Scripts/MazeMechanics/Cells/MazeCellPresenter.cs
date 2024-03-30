@@ -3,7 +3,7 @@ using MazeMechanics.Cells;
 
 namespace MazeMechanics
 {
-    internal class MazeCellPresenter
+    public class MazeCellPresenter
     {
         private MazeCellModel model;
         private IMazeCellView view;
@@ -33,7 +33,8 @@ namespace MazeMechanics
 
         private Task SpawnCollectable()
         {
-            return this.collectablePresenter.Spawn();
+            return Task.CompletedTask;
+            //return this.collectablePresenter.Spawn();
         }
     }
 }

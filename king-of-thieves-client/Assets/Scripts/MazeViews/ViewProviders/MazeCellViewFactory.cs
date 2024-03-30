@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Views
 {
-    internal class MazeCellViewFactory : MonoBehaviour, IMazeCellViewFactory
+    public class MazeCellViewFactory : MonoBehaviour, IMazeCellViewFactory
     {
         [SerializeField]
         private MazeCellView viewPrefab;
