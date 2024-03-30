@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 61557047178932758}
   - component: {fileID: 114911783089831038}
   - component: {fileID: 114797820185099922}
-  - component: {fileID: 114486199799211510}
+  - component: {fileID: 3466813756490948523}
   - component: {fileID: 7994964276656510943}
   - component: {fileID: 5990859079779576226}
   - component: {fileID: 95095399055848442}
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxClimbAngle: 80
   m_MaxDescendAngle: 80
---- !u!114 &114486199799211510
+--- !u!114 &3466813756490948523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,20 +236,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561394120766814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 775c6bf027a9b5741ae4f582b2393649, type: 3}
+  m_Script: {fileID: 11500000, guid: c6f73834486984ac1a44fb4122a49797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSettings:
+  motor: {fileID: 114797820185099922}
+  inputDriver: {fileID: 5990859079779576226}
+  movementSettings:
     Speed: 8
     AccelerationTimeAirborne: 0.1
     AccelerationTimeGrounded: 0.1
-  m_OnLadderSettings:
+  ladderInteractionSettings:
     SnapToRestrictedArea: 0
     ExitLadderOnGround: 1
     OnLadderSpeed: 4
     LockFacingToRight: 1
-  m_Jump:
-    HasVariableJumpHeight: 0
+  jumpSettings:
+    HasVariableJumpHeight: 1
     AirJumpAllowed: 0
     MaxHeight: 2.7
     MinHeight: 2.7
@@ -257,7 +259,7 @@ MonoBehaviour:
     OnLadderJumpForce: 0.4
     FallingJumpPaddingTime: 0.2
     WillJumpPaddingTime: 0.005
-  m_WallInteraction:
+  wallInteractionSettings:
     CanWallSlide: 1
     WallStickTime: 0.15
     WallStickTimer: 0
@@ -272,9 +274,9 @@ MonoBehaviour:
     CanGrabLedge: 0
     LedgeDetectionOffset: 0.1
     WallDirX: 0
-  m_Dash:
+  dashSettings:
     Module: {fileID: 0}
-  m_CustomAction:
+  customAction:
     Module: {fileID: 0}
 --- !u!114 &7994964276656510943
 MonoBehaviour:
@@ -288,8 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7566d4256d28d4b45988854b31845190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Appearance: {fileID: 4204557321351522}
-  m_Animtor: {fileID: 95095399055848442}
+  appearance: {fileID: 4204557321351522}
+  animator: {fileID: 95095399055848442}
+  movementController: {fileID: 3466813756490948523}
+  motor: {fileID: 114797820185099922}
 --- !u!114 &5990859079779576226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17caf94e6a4374f6b81e2bd55795d71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementController: {fileID: 114486199799211510}
+  movementController: {fileID: 3466813756490948523}
 --- !u!95 &95095399055848442
 Animator:
   serializedVersion: 5
