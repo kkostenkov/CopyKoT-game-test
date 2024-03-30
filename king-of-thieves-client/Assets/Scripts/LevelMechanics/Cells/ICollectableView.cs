@@ -8,5 +8,6 @@ namespace MazeMechanics
         void Place(Transform mazeCellTransform);
         event Action Touched;
         void Disable();
+        void Enable();
     }
 }

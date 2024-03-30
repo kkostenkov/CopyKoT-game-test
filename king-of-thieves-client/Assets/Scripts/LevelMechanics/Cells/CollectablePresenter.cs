@@ -7,7 +7,7 @@ namespace MazeMechanics
     {
         private ICollectableView view;
         public CollectableModel Model { get; private set; }
-        public event Action<CollectablePresenter> Collected;
+        public event Action<CollectablePresenter, int> Collected;
 
         public CollectablePresenter(CollectableModel model)
         {
@@ -18,7 +18,15 @@ namespace MazeMechanics
         {
             this.view = collectableView;
             this.view.Touched += OnCollectableTouched;
-            if (this.Model == null) {
+            UpdateView();
+        }
+
+        public void UpdateView()
+        {
+            if (this.Model?.CoinValue > 0) {
+                this.view.Enable();
+            }
+            else {
                 this.view.Disable();
             }
         }
@@ -26,7 +34,10 @@ namespace MazeMechanics
         private void OnCollectableTouched()
         {
             this.view.Disable();
-            Collected?.Invoke(this);    
+            var coins = Model.CoinValue; 
+            Model.CoinValue = 0;
+            UpdateView();
+            Collected?.Invoke(this, coins);    
         }
     }
 }

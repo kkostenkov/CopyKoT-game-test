@@ -12,6 +12,11 @@ namespace Views
             this.gameObject.SetActive(false);
         }
 
+        public void Enable()
+        {
+            this.gameObject.SetActive(true);
+        }
+
         public void OnTriggerStay2D(Collider2D col)
         {
             Debug.Log("InCollectable trigger");
