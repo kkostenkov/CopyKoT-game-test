@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Views
 {
-    public class MazeViewsDiBootstrap : MonoBehaviour
+    public class LevelViewsDiBootstrap : MonoBehaviour
     {
         [SerializeField]
         private CollectableViewFactory collectableFactory;
@@ -11,14 +11,14 @@ namespace Views
         private MazeCellViewFactory mazeCellFactory;
 
         private MonoBehaviourMethodsCaller monoBehMethods = new();
-        private MazeMechanicsDiBootstrap mechanicsDi;
+        private LevelMechanicsDiBootstrap mechanicsDi;
 
         private void Awake()
         {
             DI.CreateGameContainer();
         
             this.monoBehMethods = new MonoBehaviourMethodsCaller();
-            this.mechanicsDi = new MazeMechanicsDiBootstrap(this.monoBehMethods);
+            this.mechanicsDi = new LevelMechanicsDiBootstrap(this.monoBehMethods);
 
             this.mazeCellFactory.Inject(this.collectableFactory);
             DI.Game.Register<ICollectableViewFactory, CollectableViewFactory>(this.collectableFactory);

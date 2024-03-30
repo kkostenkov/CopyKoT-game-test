@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MazeMechanics
 {
-    public class MazeFlow : MonoBehaviour
+    public class LevelGameFlow : MonoBehaviour
     {
         private LevelTimer timer;
         private LevelStateDispatcher levelState;

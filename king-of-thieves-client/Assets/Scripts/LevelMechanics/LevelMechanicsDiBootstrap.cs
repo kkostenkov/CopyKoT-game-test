@@ -2,11 +2,11 @@
 
 namespace MazeMechanics
 {
-    public class MazeMechanicsDiBootstrap
+    public class LevelMechanicsDiBootstrap
     {
         private MonoBehaviourMethodsCaller monoBehMethods;
 
-        public MazeMechanicsDiBootstrap(MonoBehaviourMethodsCaller monoBehMethods)
+        public LevelMechanicsDiBootstrap(MonoBehaviourMethodsCaller monoBehMethods)
         {
             this.monoBehMethods = monoBehMethods;
             BootstrapDependencyInjection();

@@ -1,17 +1,18 @@
 {
-    "name": "KingOfThieves.MazeViews",
-    "rootNamespace": "MazeViews",
+    "name": "KingOfThieves.LevelMechanics",
+    "rootNamespace": "LevelMechanics",
     "references": [
-        "KingOfThieves.MazeMechanics",
-        "KingOfThieves.App",
-        "TinyIoC"
+        "PlatformerHunter-Core",
+        "PlatformerHunter.Examples",
+        "TinyIoC",
+        "KingOfThieves.App"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
