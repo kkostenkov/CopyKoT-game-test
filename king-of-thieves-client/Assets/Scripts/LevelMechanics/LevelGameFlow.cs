@@ -8,7 +8,7 @@ namespace MazeMechanics
         private LevelTimer timer;
         private LevelStateDispatcher levelState;
 
-        private async Task Start()
+        private async void Start()
         {
             CacheDependencies();
             await CreateLevel();
