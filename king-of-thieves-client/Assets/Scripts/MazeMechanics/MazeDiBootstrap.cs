@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Inputs;
+using UnityEngine;
 
 public class MazeDiBootstrap : MonoBehaviour
 {
