@@ -23,7 +23,7 @@ namespace MazeMechanics
             DI.Game.Register<DraftCellController>();
         
             DI.Game.Register<MazeCellPresenter>();
-            DI.Game.Register<CollectablePresenter>();
+            DI.Game.Register<ICollectablePresenterFactory, CollectableManager>();
         }
 
         private void RegisterMonobehListeners()

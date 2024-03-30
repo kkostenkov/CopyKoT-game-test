@@ -35,7 +35,11 @@ namespace MazeMechanics
         {
             var mazeCellModel = new MazeCellModel {
                 Id = index,
-                IsPassable = rand.Next() % 2 == 0
+                IsPassable = rand.Next() % 2 == 0,
+                CouldContainCollectables = true,
+                CollectableModel = new CollectableModel() {
+                    CoinValue = 1,
+                }
             };
             var presenter = DI.Game.Resolve<MazeCellPresenter>();
             var initCallTask = presenter.InitializeAsync(mazeCellModel);

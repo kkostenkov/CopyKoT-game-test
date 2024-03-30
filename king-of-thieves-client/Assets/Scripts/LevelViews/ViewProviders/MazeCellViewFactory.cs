@@ -24,16 +24,12 @@ namespace Views
         {
             var mazeCell = Instantiate(this.viewPrefab, GetPositionForCellId(model.Id), Quaternion.identity, this.root);
             mazeCell.name = $"Cell_{model.Id}";
-
-            Task initTask;
-            if (model.IsPassable) {
-                initTask = Task.WhenAll(mazeCell.DrawPassable(), AddCollectableView(mazeCell));
-            }
-            else {
-                initTask = mazeCell.DrawImpassable();
-            }
-
+            
+            var initTask = model.IsPassable ? mazeCell.DrawPassable() : mazeCell.DrawImpassable();
             await initTask;
+            if (model.CouldContainCollectables) {
+                await AddCollectableView(mazeCell);
+            }
             return mazeCell;
         }
 

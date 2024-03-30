@@ -2,7 +2,10 @@ namespace MazeMechanics
 {
     public class MazeCellModel
     {
-        public int Id { get; set; }
-        public bool IsPassable { get; set; }
+        public int Id;
+        public bool IsPassable;
+        public bool CouldContainCollectables;
+
+        public CollectableModel CollectableModel;
     }
 }
