@@ -1,18 +1,19 @@
-using System.Threading.Tasks;
 
 namespace MazeMechanics
 {
     public class CollectablePresenter
     {
-        private ICollectibleView view;
+        private ICollectableView view;
 
-        public CollectablePresenter()
+        public void Initialize(ICollectableView collectableView)
         {
+            this.view = collectableView;
+            this.view.Touched += OnCollectableTouched;
         }
 
-        public Task Spawn()
+        private void OnCollectableTouched()
         {
-            throw new System.NotImplementedException();
+            this.view.Disable();
         }
     }
 }

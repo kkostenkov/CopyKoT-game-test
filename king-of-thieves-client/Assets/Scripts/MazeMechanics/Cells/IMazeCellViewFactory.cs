@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using MazeMechanics.Cells;
 
 namespace MazeMechanics
 {
     public interface IMazeCellViewFactory
     {
-        IMazeCellView GetView(MazeCellModel model);
+        Task<IMazeCellView> GetView(MazeCellModel model);
     }
 }

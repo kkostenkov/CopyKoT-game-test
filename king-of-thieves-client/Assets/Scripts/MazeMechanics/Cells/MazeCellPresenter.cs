@@ -7,8 +7,8 @@ namespace MazeMechanics
     {
         private MazeCellModel model;
         private IMazeCellView view;
-        private CollectablePresenter collectablePresenter;
-        private IMazeCellViewFactory factory;
+        private readonly CollectablePresenter collectablePresenter;
+        private readonly IMazeCellViewFactory factory;
 
         public MazeCellPresenter(IMazeCellViewFactory factory, CollectablePresenter collectablePresenter)
         {
@@ -16,25 +16,14 @@ namespace MazeMechanics
             this.collectablePresenter = collectablePresenter;
         }
 
-        public Task Initialize(MazeCellModel mazeCellModel)
+        public async Task InitializeAsync(MazeCellModel mazeCellModel)
         {
-            this.view = factory.GetView(mazeCellModel);
             this.model = mazeCellModel;
-            Task initTask;
+            var viewSpawnTask = factory.GetView(mazeCellModel);
+            this.view = await viewSpawnTask;
             if (this.model.IsPassable) {
-                initTask = Task.WhenAll(this.view.DrawPassable(), SpawnCollectable());
+                collectablePresenter.Initialize(this.view.CollectableView);
             }
-            else {
-                initTask = this.view.DrawImpassable();
-            }
-
-            return initTask;
-        }
-
-        private Task SpawnCollectable()
-        {
-            return Task.CompletedTask;
-            //return this.collectablePresenter.Spawn();
         }
     }
 }

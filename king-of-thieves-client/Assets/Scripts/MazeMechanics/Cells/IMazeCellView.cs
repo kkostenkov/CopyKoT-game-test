@@ -6,5 +6,6 @@ namespace MazeMechanics.Cells
     {
         Task DrawPassable();
         Task DrawImpassable();
+        ICollectableView CollectableView { get; }
     }
 }

@@ -23,7 +23,7 @@ namespace MazeMechanics
                 IsPassable = true
             };
             var presenter = DI.Game.Resolve<MazeCellPresenter>();
-            var initCallTask = presenter.Initialize(mazeCellModel);
+            var initCallTask = presenter.InitializeAsync(mazeCellModel);
             await initCallTask;
             for (var index = 1; index < cellsToSpawn; index++) {
                 initCallTask = CreateCellAsync(index, rand);
@@ -38,7 +38,7 @@ namespace MazeMechanics
                 IsPassable = rand.Next() % 2 == 0
             };
             var presenter = DI.Game.Resolve<MazeCellPresenter>();
-            var initCallTask = presenter.Initialize(mazeCellModel);
+            var initCallTask = presenter.InitializeAsync(mazeCellModel);
             return initCallTask;
         }
     }

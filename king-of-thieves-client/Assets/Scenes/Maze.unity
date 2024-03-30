@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f02354c71e54c638e1e86496e9102b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleFactory: {fileID: 1892529620}
+  collectableFactory: {fileID: 1892529620}
   mazeCellFactory: {fileID: 1892529618}
 --- !u!1 &1167727960
 GameObject:
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff2c496bd4a49798f1219a0c0c6a215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleViewPrefab: {fileID: 1381893444101629204, guid: d84bd9bb6140f425e855c7dd0e94c3f3, type: 3}
+  collectableViewPrefab: {fileID: 1381893444101629204, guid: d84bd9bb6140f425e855c7dd0e94c3f3, type: 3}
 --- !u!1 &2106013076
 GameObject:
   m_ObjectHideFlags: 0

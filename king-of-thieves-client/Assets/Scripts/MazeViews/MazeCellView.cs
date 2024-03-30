@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using MazeMechanics;
 using MazeMechanics.Cells;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Views
 
         [SerializeField]
         private BoxCollider2D cellCollider;
+
+        public ICollectableView CollectableView { get; set; }
 
         public Task DrawPassable()
         {

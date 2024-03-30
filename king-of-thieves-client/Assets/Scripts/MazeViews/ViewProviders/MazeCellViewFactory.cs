@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using MazeMechanics;
 using MazeMechanics.Cells;
 using UnityEngine;
@@ -12,23 +13,36 @@ namespace Views
         [SerializeField]
         private Transform root;
 
-        private ICollectibleViewFactory collectibleViewFactory;
+        private ICollectableViewFactory collectableViewFactory;
 
-        public void Inject(ICollectibleViewFactory collectibleViewFactory)
+        public void Inject(ICollectableViewFactory collectableViewFactory)
         {
-            this.collectibleViewFactory = collectibleViewFactory;
+            this.collectableViewFactory = collectableViewFactory;
         }
     
-        public IMazeCellView GetView(MazeCellModel model)
+        public async Task<IMazeCellView> GetView(MazeCellModel model)
         {
             var mazeCell = Instantiate(this.viewPrefab, GetPositionForCellId(model.Id), Quaternion.identity, this.root);
             mazeCell.name = $"Cell_{model.Id}";
+
+            Task initTask;
             if (model.IsPassable) {
-                this.collectibleViewFactory = DI.Game.Resolve<ICollectibleViewFactory>();
-                var collectible = this.collectibleViewFactory.GetView();
-                collectible.Place(mazeCell.transform);
+                initTask = Task.WhenAll(mazeCell.DrawPassable(), AddCollectableView(mazeCell));
             }
+            else {
+                initTask = mazeCell.DrawImpassable();
+            }
+
+            await initTask;
             return mazeCell;
+        }
+
+        private Task AddCollectableView(MazeCellView mazeCellView)
+        {
+            var collectible = this.collectableViewFactory.GetView();
+            collectible.Place(mazeCellView.transform);
+            mazeCellView.CollectableView = collectible;
+            return Task.CompletedTask;
         }
 
         private Vector3 GetPositionForCellId(int id)

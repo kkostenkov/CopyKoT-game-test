@@ -6,7 +6,7 @@ namespace Views
     public class MazeViewsDiBootstrap : MonoBehaviour
     {
         [SerializeField]
-        private CollectibleViewFactory collectibleFactory;
+        private CollectableViewFactory collectableFactory;
         [SerializeField]
         private MazeCellViewFactory mazeCellFactory;
 
@@ -20,8 +20,8 @@ namespace Views
             this.monoBehMethods = new MonoBehaviourMethodsCaller();
             this.mechanicsDi = new MazeMechanicsDiBootstrap(this.monoBehMethods);
 
-            this.mazeCellFactory.Inject(this.collectibleFactory);
-            DI.Game.Register<ICollectibleViewFactory, CollectibleViewFactory>(this.collectibleFactory);
+            this.mazeCellFactory.Inject(this.collectableFactory);
+            DI.Game.Register<ICollectableViewFactory, CollectableViewFactory>(this.collectableFactory);
             DI.Game.Register<IMazeCellViewFactory, MazeCellViewFactory>(this.mazeCellFactory);
 
             this.monoBehMethods.Awake();
