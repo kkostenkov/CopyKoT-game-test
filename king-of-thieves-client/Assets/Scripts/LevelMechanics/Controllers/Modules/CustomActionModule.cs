@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Controllers.Modules
 {
     [System.Serializable]
-    internal class CustomActionModule
+    public class CustomActionModule
     {
         public BaseActionModule Module;
 
