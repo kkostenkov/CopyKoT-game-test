@@ -10,6 +10,7 @@ namespace MazeMechanics
         private ILevelStateInfoChanger levelState;
         private LevelInfoPresenter levelInfoPresenter;
         private MazeBuilder mazeBuilder;
+        private ILevelUiManager levelUi;
 
         private async void Start()
         {
@@ -31,8 +32,7 @@ namespace MazeMechanics
 
         private Task InitializeUI()
         {
-            DI.Game.Resolve<LevelInfoPresenter>();
-            return Task.CompletedTask;
+            return levelUi.Build();
         }
 
         private void CacheDependencies()
@@ -41,6 +41,7 @@ namespace MazeMechanics
             this.timer = DI.Game.Resolve<LevelTimer>();
             this.levelState = DI.Game.Resolve<ILevelStateInfoChanger>();
             this.levelInfoPresenter = DI.Game.Resolve<LevelInfoPresenter>();
+            this.levelUi = DI.Game.Resolve<ILevelUiManager>();
             Subscribe();
         }
         

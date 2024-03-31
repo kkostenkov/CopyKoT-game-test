@@ -1,7 +1,10 @@
+using System;
+
 namespace MazeMechanics
 {
-    internal interface ICollectableManager
+    public interface ICollectableManager
     {
+        event Action<int> CoinBalanceUpdated; 
         void Reset();
     }
 }

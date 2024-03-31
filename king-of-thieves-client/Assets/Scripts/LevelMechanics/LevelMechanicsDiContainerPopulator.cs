@@ -52,6 +52,7 @@ namespace MazeMechanics
         private static void RegisterViewPresenters(TinyIoCContainer container)
         {
             container.Register<LevelInfoPresenter>().AsSingleton();
+            container.Register<CoinsPresenter>().AsSingleton();
         }
     }
 }

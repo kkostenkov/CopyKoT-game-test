@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace MazeMechanics
@@ -6,6 +7,8 @@ namespace MazeMechanics
     {
         public const int DefaultCollectableValue = 1;
         
+        public event Action<int> CoinBalanceUpdated;
+
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
         private readonly CollectableRefresher refresher;
 
@@ -49,6 +52,7 @@ namespace MazeMechanics
         private void Score(int coins)
         {
             this.collectedCoins += coins;
+            CoinBalanceUpdated?.Invoke(this.collectedCoins);
         }
 
         private void OnCollectableRefreshed(CollectablePresenter presenter)
