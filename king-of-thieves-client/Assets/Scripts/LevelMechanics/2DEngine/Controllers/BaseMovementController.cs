@@ -131,6 +131,7 @@ namespace Controllers
             this.levelInfo = DI.Game.Resolve<ILevelStateInfoProvider>();
             this.levelInfo.SessionStarted += OnSessionStarted;
             this.levelInfo.SessionEnded += OnSessionEnded;
+            SetComponentEnabled(false);
             Init();
         }
 
@@ -1147,6 +1148,11 @@ namespace Controllers
         {
             return Mathf.RoundToInt(time / timeStep);
         }
+        
+        private void SetComponentEnabled(bool on)
+        {
+            this.enabled = on;
+        }
 
         private void OnMotorCollisionEnter2D(MotorCollision2D col)
         {
@@ -1228,12 +1234,12 @@ namespace Controllers
 
         private void OnSessionStarted()
         {
-            this.enabled = true;
+            SetComponentEnabled(true);
         }
 
         private void OnSessionEnded()
         {
-            this.enabled = false;
+            SetComponentEnabled(false);
         }
     }
 }
