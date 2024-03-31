@@ -145,8 +145,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5437621948553314633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0.05, y: 0}
+  m_AnchorMax: {x: 0.95, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0}
@@ -180,8 +180,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Music: \nFont by Kenney Vleugels (www.kenney.nl)  CC0 License"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1755f21b0aeb3417e94abd0f3ebfa6e3, type: 2}
-  m_sharedMaterial: {fileID: -5094738475520707888, guid: 1755f21b0aeb3417e94abd0f3ebfa6e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
+  m_sharedMaterial: {fileID: 2479807910111440191, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
+  m_StyleSheet: {fileID: 11400000, guid: f952c082cb03451daed3ee968ac6c63e, type: 2}
   m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
