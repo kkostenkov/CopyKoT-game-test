@@ -12,6 +12,6 @@ public class ResetButton : MonoBehaviour
 
     public void ResetUiButtonCallback()
     {
-        levelState.Set(LevelState.TimeIsUp);
+        levelState.Set(LevelState.SessionEnded);
     }
 }

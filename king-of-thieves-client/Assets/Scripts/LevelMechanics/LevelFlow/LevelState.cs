@@ -3,7 +3,9 @@ namespace MazeMechanics
     public enum LevelState
     {
         Unknown,
-        Action,
-        TimeIsUp
+        MazeLoaded,
+        SessionStarted,
+        SessionEnded,
+        NewLevelRequested
     }
 }

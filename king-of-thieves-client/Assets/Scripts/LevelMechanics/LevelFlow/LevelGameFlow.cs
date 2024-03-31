@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using LevelMechanics.UI;
 using UnityEngine;
 
 namespace MazeMechanics
@@ -6,14 +7,16 @@ namespace MazeMechanics
     public class LevelGameFlow : MonoBehaviour
     {
         private LevelTimer timer;
-        private LevelStateDispatcher levelState;
+        private ILevelStateInfoChanger levelState;
+        private DraftCellController maze;
+        private LevelInfoPresenter levelInfoPresenter;
 
         private async void Start()
         {
             CacheDependencies();
             await CreateLevel();
-            InitiateLevelTimer();
-            StartLevel();
+            await InitializeUI();
+            SetMazeLoadedState();
         }
 
         private void OnDestroy()
@@ -23,48 +26,49 @@ namespace MazeMechanics
 
         private Task CreateLevel()
         {
-            var maze = DI.Game.Resolve<DraftCellController>();
-            return maze.SpawnCells();
+            return this.maze.SpawnCells();
+        }
+
+        private Task InitializeUI()
+        {
+            DI.Game.Resolve<LevelInfoPresenter>();
+            return Task.CompletedTask;
         }
 
         private void CacheDependencies()
         {
+            this.maze = DI.Game.Resolve<DraftCellController>();
             this.timer = DI.Game.Resolve<LevelTimer>();
-            this.timer.Expired += OnLevelTimeEnded;
-            this.levelState = DI.Game.Resolve<LevelStateDispatcher>();
-            this.levelState.LevelStateChanged += OnLevelStateChanged;
+            this.levelState = DI.Game.Resolve<ILevelStateInfoChanger>();
+            this.levelInfoPresenter = DI.Game.Resolve<LevelInfoPresenter>();
+            Subscribe();
         }
-
-        private void OnLevelStateChanged(LevelState arg1, LevelState arg2)
+        
+        private void SetMazeLoadedState()
         {
-            
-        }
-
-        private void StartLevel()
-        {
-            this.levelState.Set(LevelState.Action);
-        }
-
-        private void InitiateLevelTimer()
-        {
-            this.timer.Start();
+            this.levelState.Set(LevelState.MazeLoaded);
         }
 
         private void OnLevelTimeEnded()
         {
-            this.timer.Expired -= OnLevelTimeEnded;
-            this.levelState.Set(LevelState.TimeIsUp);
+            this.levelState.Set(LevelState.SessionEnded);
+        }
+
+        private void OnSessonStartRequested()
+        {
+            this.levelState.Set(LevelState.SessionStarted);
+        }
+
+        private void Subscribe()
+        {
+            this.timer.Expired += OnLevelTimeEnded;
+            this.levelInfoPresenter.SessionStartRequested += OnSessonStartRequested;
         }
 
         private void Unsubscribe()
         {
-            if (this.timer != null) {
-                this.timer.Expired -= OnLevelTimeEnded;    
-            }
-
-            if (this.levelState != null) {
-                this.levelState.LevelStateChanged -= OnLevelStateChanged;    
-            }
+            this.timer.Expired -= OnLevelTimeEnded;
+            this.levelInfoPresenter.SessionStartRequested -= OnSessonStartRequested;
         }
     }
 }

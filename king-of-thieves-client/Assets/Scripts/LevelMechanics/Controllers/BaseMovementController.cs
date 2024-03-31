@@ -134,7 +134,7 @@ namespace Controllers
 
         private void FixedUpdate()
         {
-            if (this.levelInfo.CurrentState != LevelState.Action) {
+            if (this.levelInfo.CurrentState != LevelState.SessionStarted) {
                 return;
             }
             
@@ -143,7 +143,7 @@ namespace Controllers
 
         private void Update()
         {
-            if (this.levelInfo.CurrentState != LevelState.Action) {
+            if (this.levelInfo.CurrentState != LevelState.SessionStarted) {
                 return;
             }
             ReadInput(Time.deltaTime);

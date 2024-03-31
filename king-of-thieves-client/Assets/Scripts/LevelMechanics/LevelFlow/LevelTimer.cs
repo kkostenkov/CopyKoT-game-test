@@ -5,11 +5,23 @@ namespace MazeMechanics
 {
     public class LevelTimer : IUpdatable
     {
+        private readonly ILevelStateInfoProvider levelState;
         public event Action Expired;
 
-        private float levelTimeLimitSeconds = 500;
+        private float levelTimeLimitSeconds = 5;
         private float secondsLeft = -1;
         private bool isActive;
+
+        public LevelTimer(ILevelStateInfoProvider levelState)
+        {
+            this.levelState = levelState;
+            levelState.SessionStarted += OnSessionStarted;
+        }
+
+        private void OnSessionStarted()
+        {
+            Start();
+        }
     
         void IUpdatable.Update()
         {
@@ -25,7 +37,7 @@ namespace MazeMechanics
             }
         }
 
-        public void Start()
+        private void Start()
         {
             this.secondsLeft = this.levelTimeLimitSeconds;
             this.isActive = true;

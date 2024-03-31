@@ -1,5 +1,6 @@
 ﻿using Inputs;
 using LevelMechanics;
+using LevelMechanics.UI;
 using TinyIoC;
 
 namespace MazeMechanics
@@ -12,19 +13,26 @@ namespace MazeMechanics
             container.Register<LevelTimer>().AsSingleton();
             container.Register<LevelStateDispatcher>().AsSingleton();
             container.Register<ILevelStateInfoProvider>((c, p) => c.Resolve<LevelStateDispatcher>());
+            container.Register<ILevelStateInfoChanger>((c, p) => c.Resolve<LevelStateDispatcher>());
 
             container.Register<DraftCellController>();
-
             container.Register<MazeCellPresenter>();
             container.Register<ICollectablePresenterFactory, CollectableManager>();
 
             container.Register<CollectableRefresher>().AsSingleton();
+            
+            RegisterViewPresenters(container);
         }
 
         public override void RegisterMonobehListeners(MonoBehaviourMethodsCaller monoBehCaller)
         {
             monoBehCaller.Register(DI.Game.Resolve<LevelTimer>());
             monoBehCaller.Register(DI.Game.Resolve<CollectableRefresher>());
+        }
+
+        private static void RegisterViewPresenters(TinyIoCContainer container)
+        {
+            container.Register<LevelInfoPresenter>().AsSingleton();
         }
     }
 }
