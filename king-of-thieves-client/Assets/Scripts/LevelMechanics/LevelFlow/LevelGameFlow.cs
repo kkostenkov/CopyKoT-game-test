@@ -8,8 +8,8 @@ namespace MazeMechanics
     {
         private LevelTimer timer;
         private ILevelStateInfoChanger levelState;
-        private DraftCellController maze;
         private LevelInfoPresenter levelInfoPresenter;
+        private MazeBuilder mazeBuilder;
 
         private async void Start()
         {
@@ -26,7 +26,7 @@ namespace MazeMechanics
 
         private Task CreateLevel()
         {
-            return this.maze.SpawnCells();
+            return this.mazeBuilder.SpawnCells();
         }
 
         private Task InitializeUI()
@@ -37,7 +37,7 @@ namespace MazeMechanics
 
         private void CacheDependencies()
         {
-            this.maze = DI.Game.Resolve<DraftCellController>();
+            this.mazeBuilder = DI.Game.Resolve<MazeBuilder>();
             this.timer = DI.Game.Resolve<LevelTimer>();
             this.levelState = DI.Game.Resolve<ILevelStateInfoChanger>();
             this.levelInfoPresenter = DI.Game.Resolve<LevelInfoPresenter>();
@@ -56,6 +56,7 @@ namespace MazeMechanics
 
         private void OnSessonStartRequested()
         {
+            this.mazeBuilder.Reset();
             this.levelState.Set(LevelState.SessionStarted);
         }
 
