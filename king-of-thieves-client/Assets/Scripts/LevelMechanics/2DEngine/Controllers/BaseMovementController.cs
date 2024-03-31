@@ -1239,6 +1239,7 @@ namespace Controllers
 
         private void OnSessionEnded()
         {
+            facingDirection = 1;
             SetComponentEnabled(false);
         }
     }
