@@ -129,23 +129,18 @@ namespace Controllers
         private void Start()
         {
             this.levelInfo = DI.Game.Resolve<ILevelStateInfoProvider>();
+            this.levelInfo.SessionStarted += OnSessionStarted;
+            this.levelInfo.SessionEnded += OnSessionEnded;
             Init();
         }
 
         private void FixedUpdate()
         {
-            if (this.levelInfo.CurrentState != LevelState.SessionStarted) {
-                return;
-            }
-            
             RunControllerCycle(Time.fixedDeltaTime);
         }
 
         private void Update()
         {
-            if (this.levelInfo.CurrentState != LevelState.SessionStarted) {
-                return;
-            }
             ReadInput(Time.deltaTime);
         }
 
@@ -1229,6 +1224,16 @@ namespace Controllers
             //{
             //    m_AirJumpCounter = 0;
             //}
+        }
+
+        private void OnSessionStarted()
+        {
+            this.enabled = true;
+        }
+
+        private void OnSessionEnded()
+        {
+            this.enabled = false;
         }
     }
 }
