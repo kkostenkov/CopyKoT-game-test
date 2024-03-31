@@ -36,7 +36,7 @@ namespace MazeMechanics
 
         private static void RegisterMazeBuilding(TinyIoCContainer container)
         {
-            container.Register<DraftCellController>().AsSingleton();
+            container.Register<CellController>().AsSingleton();
             container.Register<MazeBuilder>().AsSingleton();
             container.Register<MazeCellPresenter>();
         }

@@ -44,9 +44,8 @@ namespace LevelMechanics.LevelMechanics.Cells
                         newX -= 2;
                         break; // Left
                 }
-
-                var couldRemoveWallInNewCoords = CheckIsWall(maze, newX, newY);
-                if (couldRemoveWallInNewCoords) {
+                
+                if (CheckIsInsideWalls(maze, newX, newY) && CheckIsWall(maze, newX, newY)) {
                     maze[newX, newY] = false;
                     var pointBetweenXAndNewX = newX + (x - newX) / 2;
                     var pointBetweenYAndNewY = newY + (y - newY) / 2;
@@ -56,16 +55,19 @@ namespace LevelMechanics.LevelMechanics.Cells
             }
         }
 
-        private static bool CheckIsWall(bool[,] maze, int newX, int newY)
+        private static bool CheckIsInsideWalls(bool[,] maze, int newX, int newY)
         {
             var width = maze.GetLength(0);
             var height = maze.GetLength(1);
-            var isInRangeNewX = newX > 0 && newX < width;
-            var isInRangeNewY = newY > 0 && newY < height;
-            var areNewCoordsValid = isInRangeNewX && isInRangeNewY;
-            var isWallInNewCoors = maze[newX, newY];
-            var couldRemoveWall = areNewCoordsValid && isWallInNewCoors;
-            return couldRemoveWall;
+            var isInsideWallsNewX = newX > 0 && newX < width;
+            var isInsideWallsNewY = newY > 0 && newY < height;
+            var isInsideWalls = isInsideWallsNewX && isInsideWallsNewY;
+            return isInsideWalls;
+        }
+
+        private static bool CheckIsWall(bool[,] maze, int newX, int newY)
+        {
+            return maze[newX, newY];
         }
 
         private static void Shuffle(int[] array, Random random)

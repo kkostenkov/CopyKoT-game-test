@@ -22,7 +22,8 @@ namespace Views
     
         public async Task<IMazeCellView> GetView(MazeCellModel model)
         {
-            var mazeCell = Instantiate(this.viewPrefab, GetPositionForCellId(model.Id), Quaternion.identity, this.root);
+            var position = GetPositionForCoords(model.X, model.Y);
+            var mazeCell = Instantiate(this.viewPrefab, position, Quaternion.identity, this.root);
             mazeCell.name = $"Cell_{model.Id}";
             
             var initTask = model.IsPassable ? mazeCell.DrawPassable() : mazeCell.DrawImpassable();
@@ -41,13 +42,10 @@ namespace Views
             return Task.CompletedTask;
         }
 
-        private Vector3 GetPositionForCellId(int id)
+        private Vector3 GetPositionForCoords(int x, int y)
         {
-            var mapWidth = 7;
-            var row = id % mapWidth;
-            var column = id / mapWidth;
             var spriteWidth = 4;
-            return new Vector3(row, column, 0) * spriteWidth;
+            return new Vector3(x, y, 0) * spriteWidth;
         }
     }
 }
