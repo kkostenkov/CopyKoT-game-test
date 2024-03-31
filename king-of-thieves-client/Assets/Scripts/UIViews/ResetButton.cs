@@ -1,4 +1,4 @@
-using MazeMechanics;
+using LevelMechanics;
 using UnityEngine;
 
 public class ResetButton : MonoBehaviour

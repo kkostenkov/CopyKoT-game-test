@@ -1,16 +1,18 @@
 using System;
 using UnityEngine;
 
-namespace MazeMechanics
+namespace LevelMechanics
 {
-    public class LevelTimer : IUpdatable
+    public class LevelTimer : IUpdatable, ILevelTimeProvider
     {
         private readonly ILevelStateInfoProvider levelState;
         public event Action Expired;
+        public event Action<int> SeсondsLeftUpdated;
 
-        private float levelTimeLimitSeconds = 5;
+        private float levelTimeLimitSeconds = 500;
         private float secondsLeft = -1;
         private bool isActive;
+        private float lastTimeEventFired;
 
         public LevelTimer(ILevelStateInfoProvider levelState)
         {
@@ -35,11 +37,14 @@ namespace MazeMechanics
                 Debug.Log("Level timer expired");
                 this.Expired?.Invoke();
             }
+
+            TryFireSecondTickEvent();
         }
 
         private void Start()
         {
-            this.secondsLeft = this.levelTimeLimitSeconds;
+            this.secondsLeft = levelTimeLimitSeconds;
+            this.SeсondsLeftUpdated?.Invoke((int)this.secondsLeft);
             this.isActive = true;
             Debug.Log("Level timer started");
         }
@@ -48,6 +53,15 @@ namespace MazeMechanics
         {
             this.isActive = false;
             this.secondsLeft = -1;
+        }
+
+        private void TryFireSecondTickEvent()
+        {
+            var hasSecondPassed = Math.Abs(this.lastTimeEventFired - this.secondsLeft) >= 1f;
+            if (hasSecondPassed) {
+                this.SeсondsLeftUpdated?.Invoke((int)this.secondsLeft);
+                this.lastTimeEventFired = this.secondsLeft;
+            }
         }
     }
 }

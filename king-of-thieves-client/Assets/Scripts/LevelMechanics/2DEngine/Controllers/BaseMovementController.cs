@@ -2,7 +2,7 @@
 using Controllers.Modules;
 using Controllers.Settings;
 using DYP;
-using MazeMechanics;
+using LevelMechanics;
 using UnityEngine;
 
 namespace Controllers

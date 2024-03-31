@@ -8,6 +8,7 @@ public class LevelUiManager : MonoBehaviour, ILevelUiManager
     {
         var levelInfoPresenter = DI.Game.Resolve<LevelInfoPresenter>();
         var coinsPresenter = DI.Game.Resolve<CoinsPresenter>();
+        var timePresenter = DI.Game.Resolve<LevelTimePresenter>();
     }
 
     public Task Build()

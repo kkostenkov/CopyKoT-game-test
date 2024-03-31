@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MazeMechanics
+namespace LevelMechanics
 {
     public class LevelStateDispatcher : ILevelStateInfoChanger
     {

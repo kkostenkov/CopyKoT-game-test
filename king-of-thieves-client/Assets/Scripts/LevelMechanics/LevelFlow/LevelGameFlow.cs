@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
 using LevelMechanics.UI;
+using MazeMechanics;
 using UnityEngine;
 
-namespace MazeMechanics
+namespace LevelMechanics
 {
     public class LevelGameFlow : MonoBehaviour
     {

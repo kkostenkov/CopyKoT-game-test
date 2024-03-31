@@ -28,6 +28,7 @@ namespace MazeMechanics
         private static void RegisterLevelFlow(TinyIoCContainer container)
         {
             container.Register<LevelTimer>().AsSingleton();
+            container.Register<ILevelTimeProvider>((c, p) => c.Resolve<LevelTimer>());
             container.Register<LevelStateDispatcher>().AsSingleton();
             container.Register<ILevelStateInfoProvider>((c, p) => c.Resolve<LevelStateDispatcher>());
             container.Register<ILevelStateInfoChanger>((c, p) => c.Resolve<LevelStateDispatcher>());
@@ -53,6 +54,7 @@ namespace MazeMechanics
         {
             container.Register<LevelInfoPresenter>().AsSingleton();
             container.Register<CoinsPresenter>().AsSingleton();
+            container.Register<LevelTimePresenter>().AsSingleton();
         }
     }
 }

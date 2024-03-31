@@ -1,6 +1,6 @@
 using System;
 
-namespace MazeMechanics
+namespace LevelMechanics
 {
     public interface ILevelStateInfoProvider
     {
