@@ -140,8 +140,12 @@ namespace DYP
 
         private void OnDrawGizmos()
         {
+            if (!this.enabled) {
+                return;
+            }
+
             Gizmos.color = new Color(1, 0, 0, 0.5f);
-            Gizmos.DrawCube(m_FocusArea.Center, m_FocusAreaSize);
+            Gizmos.DrawCube(this.m_FocusArea.Center, this.m_FocusAreaSize);
         }
     }
 }

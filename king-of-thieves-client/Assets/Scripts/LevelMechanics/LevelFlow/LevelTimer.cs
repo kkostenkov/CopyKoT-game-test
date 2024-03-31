@@ -9,7 +9,7 @@ namespace LevelMechanics
         public event Action Expired;
         public event Action<int> SeсondsLeftUpdated;
 
-        private float levelTimeLimitSeconds = 500;
+        private float levelTimeLimitSeconds = 60;
         private float secondsLeft = -1;
         private bool isActive;
         private float lastTimeEventFired;
