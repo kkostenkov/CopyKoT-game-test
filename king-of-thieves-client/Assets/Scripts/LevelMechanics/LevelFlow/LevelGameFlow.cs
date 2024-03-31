@@ -26,7 +26,7 @@ namespace MazeMechanics
 
         private Task CreateLevel()
         {
-            return this.mazeBuilder.SpawnCells();
+            return this.mazeBuilder.Build();
         }
 
         private Task InitializeUI()

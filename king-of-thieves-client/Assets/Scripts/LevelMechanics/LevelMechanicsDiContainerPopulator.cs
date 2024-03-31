@@ -10,6 +10,7 @@ namespace MazeMechanics
         public override void RegisterDependencies(TinyIoCContainer container)
         {
             container.Register<IInput, InputBridge>().AsSingleton();
+            container.Register<PlayerPresenter>().AsSingleton();
             
             RegisterLevelFlow(container);
             RegisterMazeBuilding(container);

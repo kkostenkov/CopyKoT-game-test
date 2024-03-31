@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using LevelMechanics;
 
 namespace MazeMechanics
 {
@@ -6,14 +7,16 @@ namespace MazeMechanics
     {
         private DraftCellController cellController;
         private ICollectableManager collectableManager;
+        private PlayerPresenter player;
 
-        public MazeBuilder(DraftCellController cellController, ICollectableManager collectableManager)
+        public MazeBuilder(DraftCellController cellController, ICollectableManager collectableManager, PlayerPresenter player)
         {
+            this.player = player;
             this.cellController = cellController;
             this.collectableManager = collectableManager;
         }
         
-        public Task SpawnCells()
+        public Task Build()
         {
             return this.cellController.SpawnCells();
         }
@@ -21,6 +24,7 @@ namespace MazeMechanics
         public void Reset()
         {
             collectableManager.Reset();
+            player.ResetPosition();
         }
     }
 }

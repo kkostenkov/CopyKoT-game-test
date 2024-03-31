@@ -593,6 +593,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4129528662326088, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
   m_PrefabInstance: {fileID: 3347744954290512227}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3347744954290512229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1476252179207186333, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
+  m_PrefabInstance: {fileID: 3347744954290512227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecdb8ac06014e1bb7c894ff5798793b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3347744954290512234 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114911783089831038, guid: 01018d6d6de8941bbb22332151304d1f, type: 3}
@@ -616,6 +627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DIBootstrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3491959143507764364, guid: a0a587a6a953e4a0c98cbfbd55e832bd, type: 3}
+      propertyPath: playerView
+      value: 
+      objectReference: {fileID: 3347744954290512229}
     - target: {fileID: 3689687100905789080, guid: a0a587a6a953e4a0c98cbfbd55e832bd, type: 3}
       propertyPath: root
       value: 
