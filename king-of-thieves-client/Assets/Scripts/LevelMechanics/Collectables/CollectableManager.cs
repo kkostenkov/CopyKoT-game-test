@@ -36,6 +36,8 @@ namespace MazeMechanics
                 presenter.Model.CoinValue = DefaultCollectableValue;
                 presenter.UpdateView();    
             }
+            this.collectedCoins = 0;
+            CoinBalanceUpdated?.Invoke(this.collectedCoins);
         }
 
         private void OnCollected(CollectablePresenter presenter, int coins)
