@@ -16,6 +16,11 @@ namespace MazeMechanics
             StartLevel();
         }
 
+        private void OnDestroy()
+        {
+            Unsubscribe();
+        }
+
         private Task CreateLevel()
         {
             var maze = DI.Game.Resolve<DraftCellController>();
@@ -25,7 +30,14 @@ namespace MazeMechanics
         private void CacheDependencies()
         {
             this.timer = DI.Game.Resolve<LevelTimer>();
+            this.timer.Expired += OnLevelTimeEnded;
             this.levelState = DI.Game.Resolve<LevelStateDispatcher>();
+            this.levelState.LevelStateChanged += OnLevelStateChanged;
+        }
+
+        private void OnLevelStateChanged(LevelState arg1, LevelState arg2)
+        {
+            
         }
 
         private void StartLevel()
@@ -33,21 +45,26 @@ namespace MazeMechanics
             this.levelState.Set(LevelState.Action);
         }
 
-        private void StopLevel()
-        {
-            this.levelState.Set(LevelState.TimeIsUp);
-        }
-
         private void InitiateLevelTimer()
         {
-            this.timer.Expired += OnLevelTimeEnded;
             this.timer.Start();
         }
 
         private void OnLevelTimeEnded()
         {
             this.timer.Expired -= OnLevelTimeEnded;
-            StopLevel();
+            this.levelState.Set(LevelState.TimeIsUp);
+        }
+
+        private void Unsubscribe()
+        {
+            if (this.timer != null) {
+                this.timer.Expired -= OnLevelTimeEnded;    
+            }
+
+            if (this.levelState != null) {
+                this.levelState.LevelStateChanged -= OnLevelStateChanged;    
+            }
         }
     }
 }
