@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MazeMechanics
 {
-    internal class CollectableManager : ICollectablePresenterFactory
+    internal class CollectableManager : ICollectablePresenterFactory, ICollectableManager
     {
+        public const int DefaultCollectableValue = 1;
+        
+        public event Action<int> CoinBalanceUpdated;
+
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
         private readonly CollectableRefresher refresher;
 
@@ -24,6 +28,16 @@ namespace MazeMechanics
             return presenter;
         }
 
+        public void Reset()
+        {
+            refresher.Clear();
+            foreach (var presenterKvP in presenters) {
+                var presenter = presenterKvP.Value;
+                presenter.Model.CoinValue = DefaultCollectableValue;
+                presenter.UpdateView();    
+            }
+        }
+
         private void OnCollected(CollectablePresenter presenter, int coins)
         {
             Score(coins);
@@ -38,11 +52,12 @@ namespace MazeMechanics
         private void Score(int coins)
         {
             this.collectedCoins += coins;
+            CoinBalanceUpdated?.Invoke(this.collectedCoins);
         }
 
         private void OnCollectableRefreshed(CollectablePresenter presenter)
         {
-            presenter.Model.CoinValue = 1;
+            presenter.Model.CoinValue = DefaultCollectableValue;
             presenter.UpdateView();
         }
     }

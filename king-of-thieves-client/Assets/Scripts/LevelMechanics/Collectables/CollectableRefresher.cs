@@ -29,6 +29,11 @@ namespace MazeMechanics
                 }
             }
         }
+
+        public void Clear()
+        {
+            waitingPresenters.Clear();
+        }
     }
     
     internal struct WaitingPresenter

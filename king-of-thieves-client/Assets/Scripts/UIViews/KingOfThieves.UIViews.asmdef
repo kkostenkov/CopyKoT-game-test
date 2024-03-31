@@ -1,0 +1,19 @@
+{
+    "name": "KingOfThieves.UIViews",
+    "rootNamespace": "",
+    "references": [
+        "KingOfThieves.App",
+        "KingOfThieves.LevelMechanics",
+        "TinyIoC",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
