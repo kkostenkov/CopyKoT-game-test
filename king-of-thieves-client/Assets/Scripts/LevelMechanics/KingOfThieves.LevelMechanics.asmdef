@@ -5,7 +5,9 @@
         "PlatformerHunter-Core",
         "PlatformerHunter.Examples",
         "TinyIoC",
-        "KingOfThieves.App"
+        "KingOfThieves.App",
+        "Unity.ResourceManager",
+        "Unity.Addressables"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

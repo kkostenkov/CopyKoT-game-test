@@ -55,8 +55,9 @@ namespace MazeMechanics
             container.Register<ICollectablePresenterFactory>((c, p) => c.Resolve<CollectableManager>());
             container.Register<CollectableRefresher>().AsSingleton();
             
-            container.Register<ITreasureGenerationSettingsProvider, SettingsProvider>().AsSingleton();
-            container.Register<ICollectableSpawnSettingsProvider, SettingsProvider>().AsSingleton();
+            container.Register<SettingsProvider>().AsSingleton();
+            container.Register<ICollectableSpawnSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
+            container.Register<ITreasureGenerationSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
         }
 
         private static void RegisterViewPresenters(TinyIoCContainer container)
