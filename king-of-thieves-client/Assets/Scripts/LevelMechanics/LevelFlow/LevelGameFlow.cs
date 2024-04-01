@@ -65,7 +65,7 @@ namespace LevelMechanics
 
         private void OnNewLevelRequested()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         private void Subscribe()
