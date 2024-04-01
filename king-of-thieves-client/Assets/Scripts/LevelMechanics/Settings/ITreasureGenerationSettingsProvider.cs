@@ -1,4 +1,4 @@
-namespace MazeMechanics
+namespace LevelMechanics.Settings
 {
     public interface ITreasureGenerationSettingsProvider
     {

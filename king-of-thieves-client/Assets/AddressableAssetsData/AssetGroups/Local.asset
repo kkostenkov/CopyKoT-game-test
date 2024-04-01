@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Local
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Local
   m_Data:
     m_SerializedData: []
   m_GUID: 9b8e7026d387643f585cb72c028ef176
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0fd8b146c678a4fb0a1a18b2e9f214b3
+    m_Address: GameSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f2bd5966b2754b0d86d0b865f6a50e8, type: 2}
   m_SchemaSet:

@@ -1,5 +1,6 @@
 ﻿using Inputs;
 using LevelMechanics;
+using LevelMechanics.Settings;
 using LevelMechanics.UI;
 using MazeMechanics.Cells;
 using MazeMechanics.Random;
@@ -21,6 +22,8 @@ namespace MazeMechanics
             
             RegisterViewPresenters(container);
             
+            RegisterSettings(container);
+
             container.Register<IScoreStorage, PlayerPrefsStorage>().AsSingleton();
             container.Register<IRandomProvider, RandomProvider>().AsSingleton();
         }
@@ -54,10 +57,6 @@ namespace MazeMechanics
             container.Register<ICollectableManager>((c, p) => c.Resolve<CollectableManager>());
             container.Register<ICollectablePresenterFactory>((c, p) => c.Resolve<CollectableManager>());
             container.Register<CollectableRefresher>().AsSingleton();
-            
-            container.Register<SettingsProvider>().AsSingleton();
-            container.Register<ICollectableSpawnSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
-            container.Register<ITreasureGenerationSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
         }
 
         private static void RegisterViewPresenters(TinyIoCContainer container)
@@ -65,6 +64,14 @@ namespace MazeMechanics
             container.Register<LevelInfoPresenter>().AsSingleton();
             container.Register<CoinsPresenter>().AsSingleton();
             container.Register<LevelTimePresenter>().AsSingleton();
+        }
+
+        private static void RegisterSettings(TinyIoCContainer container)
+        {
+            container.Register<SettingsProvider>().AsSingleton();
+            container.Register<ICollectableSpawnSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
+            container.Register<ITreasureGenerationSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
+            container.Register<ITimeSettingsProvider>((c, p) => c.Resolve<SettingsProvider>());
         }
     }
 }

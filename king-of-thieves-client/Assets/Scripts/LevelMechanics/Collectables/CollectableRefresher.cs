@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LevelMechanics.Settings;
 using MazeMechanics.Random;
 
 namespace MazeMechanics

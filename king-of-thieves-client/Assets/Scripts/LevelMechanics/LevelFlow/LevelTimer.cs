@@ -1,4 +1,5 @@
 using System;
+using LevelMechanics.Settings;
 using UnityEngine;
 
 namespace LevelMechanics
@@ -8,14 +9,15 @@ namespace LevelMechanics
         private readonly ILevelStateInfoProvider levelState;
         public event Action Expired;
         public event Action<int> SeсondsLeftUpdated;
-
-        private float levelTimeLimitSeconds = 60;
+        
         private float secondsLeft = -1;
         private bool isActive;
         private float lastTimeEventFired;
+        private ITimeSettingsProvider settings;
 
-        public LevelTimer(ILevelStateInfoProvider levelState)
+        public LevelTimer(ILevelStateInfoProvider levelState, ITimeSettingsProvider settings)
         {
+            this.settings = settings;
             this.levelState = levelState;
             levelState.SessionStarted += OnSessionStarted;
         }
@@ -43,7 +45,7 @@ namespace LevelMechanics
 
         private void Start()
         {
-            this.secondsLeft = levelTimeLimitSeconds;
+            this.secondsLeft = settings.LevelTimeLimitSeconds;
             this.SeсondsLeftUpdated?.Invoke((int)this.secondsLeft);
             this.isActive = true;
             Debug.Log("Level timer started");

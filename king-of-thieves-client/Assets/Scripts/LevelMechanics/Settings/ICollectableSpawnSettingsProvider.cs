@@ -1,4 +1,4 @@
-namespace MazeMechanics
+namespace LevelMechanics.Settings
 {
     internal interface ICollectableSpawnSettingsProvider
     {

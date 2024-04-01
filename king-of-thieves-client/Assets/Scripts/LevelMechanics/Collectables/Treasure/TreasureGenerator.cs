@@ -1,3 +1,4 @@
+using LevelMechanics.Settings;
 using MazeMechanics.Cells;
 using MazeMechanics.Random;
 

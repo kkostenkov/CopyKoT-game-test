@@ -6,4 +6,5 @@ public class GameSettingsScriptable : ScriptableObject
     public int ChestChancePercent = 10;
     public int MinSpawnDelaySeconds = 3;
     public int MaxSpawnDelaySeconds = 10;
+    public int LevelTimeLimitSeconds = 60;
 }
