@@ -34,25 +34,32 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: 8f8d27018e617446197b198a462f2bca, type: 3}
     - {fileID: 102900000, guid: ddadb3225083d4d629b95f97ff7a06c5, type: 3}
+    - {fileID: 102900000, guid: fd16624137c6e4a99a67176598620921, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - ab537bd302c0e4622b1408fa24176736: 21300000
     - 3473c4f3828744e9699fbf1ffcd28529: 21300000
     - 00ec33151b36840c8a6a6835f25d02c0: 21300000
+    - 37ec7e6bcc1934d219922b0905d4093b: 21300000
     - 29eadd4c35ad74504b7e10803612f1f9: 21300000
     - f5ebeb4d98c7b480a8a74d757281fe7d: 21300000
     - 82a7bb7dedc6549328ecead39e779600: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: ab537bd302c0e4622b1408fa24176736, type: 3}
   - {fileID: 21300000, guid: 3473c4f3828744e9699fbf1ffcd28529, type: 3}
   - {fileID: 21300000, guid: 00ec33151b36840c8a6a6835f25d02c0, type: 3}
+  - {fileID: 21300000, guid: 37ec7e6bcc1934d219922b0905d4093b, type: 3}
   - {fileID: 21300000, guid: 29eadd4c35ad74504b7e10803612f1f9, type: 3}
   - {fileID: 21300000, guid: f5ebeb4d98c7b480a8a74d757281fe7d, type: 3}
   - {fileID: 21300000, guid: 82a7bb7dedc6549328ecead39e779600, type: 3}
   m_PackedSpriteNamesToIndex:
+  - grey_button12
   - trophy
   - grey_button05
+  - hud_coins
   - right
   - grey_panel
   - return
