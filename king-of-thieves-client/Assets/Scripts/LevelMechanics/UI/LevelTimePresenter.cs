@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 
 namespace LevelMechanics.UI
@@ -16,6 +17,7 @@ namespace LevelMechanics.UI
 
         private void OnSecondTicked(int secondsLeft)
         {
+            secondsLeft = Math.Max(0, secondsLeft);
             var timeText = $"{secondsLeft / 60:d2}:{secondsLeft % 60:d2}";
             this.view.SetTimeText(timeText);
         }

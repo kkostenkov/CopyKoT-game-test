@@ -8,10 +8,12 @@ namespace MazeMechanics
         public const int DefaultCollectableValue = 1;
         
         public event Action<int> CoinBalanceUpdated;
+        public int CoinBalance {
+            get => this.collectedCoins;
+        }
 
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
         private readonly CollectableRefresher refresher;
-
         private int collectedCoins = 0;
 
         public CollectableManager(CollectableRefresher refresher)
