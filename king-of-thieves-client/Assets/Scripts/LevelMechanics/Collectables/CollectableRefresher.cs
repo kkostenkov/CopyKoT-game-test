@@ -9,18 +9,18 @@ namespace MazeMechanics
         public event Action<CollectablePresenter> Refreshed;
         
         private readonly List<WaitingPresenter> waitingPresenters = new();
-        private int minDelaySeconds = 200;
-        private int maxDelaySeconds = 10000;
         private IRandomProvider rand;
+        private ICollectableSpawnSettingsProvider settings;
 
-        public CollectableRefresher(IRandomProvider random)
+        public CollectableRefresher(IRandomProvider random, ICollectableSpawnSettingsProvider settings)
         {
+            this.settings = settings;
             this.rand = random;
         }
 
         public void Schedule(CollectablePresenter presenter)
         {
-            var delay = this.rand.Next(minDelaySeconds, this.maxDelaySeconds + 1);
+            var delay = this.rand.Next(settings.MinSpawnDelaySeconds, this.settings.MaxSpawnDelaySeconds + 1);
             var entry = new WaitingPresenter(DateTime.UtcNow + TimeSpan.FromSeconds(delay), presenter);
             this.waitingPresenters.Add(entry);
         }
