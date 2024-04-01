@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LevelMechanics;
+using MazeMechanics.Storage;
 
 namespace MazeMechanics
 {
@@ -16,13 +17,16 @@ namespace MazeMechanics
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
         private readonly CollectableRefresher refresher;
         private ILevelStateInfoProvider levelState;
+        private IScoreStorage storage;
 
-        public CollectableManager(CollectableRefresher refresher, ILevelStateInfoProvider levelState)
+        public CollectableManager(CollectableRefresher refresher, ILevelStateInfoProvider levelState, IScoreStorage storage)
         {
+            this.storage = storage;
             this.levelState = levelState;
             this.refresher = refresher;
             this.refresher.Refreshed += OnCollectableRefreshed;
             this.levelState.SessionEnded += OnSessionEnded;
+            CoinsBest = storage.GetCoinsBest();
         }
 
         public CollectablePresenter GetPresenter(MazeCellModel model)
@@ -53,7 +57,12 @@ namespace MazeMechanics
 
         private void OnSessionEnded()
         {
-            CoinsBest = Math.Max(CoinsBest, CoinBalance);
+            if (CoinBalance <= CoinsBest) {
+                return;
+            }
+
+            CoinsBest = CoinBalance;
+            this.storage.SetCoinsBest(CoinsBest);
         }
 
         private void ScheduleRefresh(CollectablePresenter presenter)

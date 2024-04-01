@@ -1,6 +1,7 @@
 ﻿using Inputs;
 using LevelMechanics;
 using LevelMechanics.UI;
+using MazeMechanics.Storage;
 using TinyIoC;
 
 namespace MazeMechanics
@@ -17,6 +18,8 @@ namespace MazeMechanics
             RegisterCollectables(container);
             
             RegisterViewPresenters(container);
+            
+            container.Register<IScoreStorage, PlayerPrefsStorage>().AsSingleton();
         }
 
         public override void RegisterMonobehListeners(MonoBehaviourMethodsCaller monoBehCaller)

@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Last score:'
+  m_text: 'Your score:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
   m_sharedMaterial: {fileID: 2479807910111440191, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
