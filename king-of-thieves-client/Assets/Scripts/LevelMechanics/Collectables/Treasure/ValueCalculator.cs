@@ -13,7 +13,7 @@ namespace MazeMechanics
                 case TreasureKind.Coin:
                     return 1;
                 case TreasureKind.Chest:
-                    return Math.Min(1, coinBalance / 10);
+                    return Math.Max(1, coinBalance / 10);
                 default:
                     Debug.LogError($"missing case for {model.Treasure}");
                     return 0;
