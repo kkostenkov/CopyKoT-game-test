@@ -10,12 +10,15 @@ namespace MazeMechanics
         private CellController cellController;
         private ICollectableManager collectableManager;
         private PlayerPresenter player;
+        private ITreasureGenerator treasureGenerator;
 
-        public MazeBuilder(CellController cellController, ICollectableManager collectableManager, PlayerPresenter player)
+        public MazeBuilder(CellController cellController, ICollectableManager collectableManager, PlayerPresenter player,
+            ITreasureGenerator treasureGenerator)
         {
             this.player = player;
             this.cellController = cellController;
             this.collectableManager = collectableManager;
+            this.treasureGenerator = treasureGenerator;
         }
         
         public Task Build()
@@ -53,11 +56,7 @@ namespace MazeMechanics
                         IsPassable = !isWall,
                         CouldContainCollectables = !isWall,
                     };
-                    if (mazeCellModel.CouldContainCollectables) {
-                        mazeCellModel.CollectableModel = new CollectableModel() {
-                            CoinValue = 1,
-                        };
-                    }
+                    treasureGenerator.TryAddTreasure(mazeCellModel);
                     
                     cellModels.Add(mazeCellModel);
                 }

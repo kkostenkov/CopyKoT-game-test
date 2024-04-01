@@ -77,7 +77,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
 --- !u!212 &411653204894211647
 SpriteRenderer:
@@ -143,3 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd45084222b249fbb5c9c01390a180e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectableSprite: {fileID: 411653204894211647}
+  coin: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  chest: {fileID: 21300000, guid: 3473c4f3828744e9699fbf1ffcd28529, type: 3}
