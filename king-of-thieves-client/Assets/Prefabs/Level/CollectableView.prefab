@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.34, y: 4.63, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 0.47, y: 0.47}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 37ec7e6bcc1934d219922b0905d4093b, type: 3}
   m_Color: {r: 1, g: 0.7861817, b: 0.051886797, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,5 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableSprite: {fileID: 411653204894211647}
-  coin: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  coin: {fileID: 21300000, guid: 37ec7e6bcc1934d219922b0905d4093b, type: 3}
   chest: {fileID: 21300000, guid: 3473c4f3828744e9699fbf1ffcd28529, type: 3}
