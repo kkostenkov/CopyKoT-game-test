@@ -17,14 +17,14 @@ namespace Views
 
         public Task DrawPassable()
         {
-            this.spriteRenderer.enabled = false;
+            this.spriteRenderer.enabled = true;
             this.cellCollider.enabled = false;
             return Task.CompletedTask;
         }
 
         public Task DrawImpassable()
         {
-            this.spriteRenderer.enabled = true;
+            this.spriteRenderer.enabled = false;
             this.cellCollider.enabled = true;
             return Task.CompletedTask;
         }
