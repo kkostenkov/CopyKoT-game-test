@@ -42,6 +42,7 @@ namespace MazeMechanics
             container.Register<CellController>().AsSingleton();
             container.Register<MazeBuilder>().AsSingleton();
             container.Register<MazeCellPresenter>();
+            container.Register<ITreasureGenerator, TreasureGenerator>();
         }
 
         private static void RegisterCollectables(TinyIoCContainer container)

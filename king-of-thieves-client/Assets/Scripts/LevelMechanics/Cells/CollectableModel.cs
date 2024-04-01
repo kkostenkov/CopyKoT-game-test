@@ -2,6 +2,6 @@ namespace MazeMechanics
 {
     public class CollectableModel
     {
-        public int CoinValue;
+        public TreasureKind Treasure;
     }
 }

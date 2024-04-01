@@ -9,8 +9,8 @@ namespace MazeMechanics
         
         private readonly List<WaitingPresenter> waitingPresenters = new();
         private readonly Random rand = new Random();
-        private int minDelaySeconds = 2;
-        private int maxDelaySeconds = 10;
+        private int minDelaySeconds = 200;
+        private int maxDelaySeconds = 10000;
 
         public void Schedule(CollectablePresenter presenter)
         {

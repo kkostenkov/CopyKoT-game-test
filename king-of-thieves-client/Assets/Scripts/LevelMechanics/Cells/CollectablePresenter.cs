@@ -1,5 +1,6 @@
 
 using System;
+using UnityEngine;
 
 namespace MazeMechanics
 {
@@ -7,11 +8,11 @@ namespace MazeMechanics
     {
         private ICollectableView view;
         public CollectableModel Model { get; private set; }
-        public event Action<CollectablePresenter, int> Collected;
+        public event Action<CollectablePresenter> Collected;
 
-        public CollectablePresenter(CollectableModel model)
+        public void SetModel(CollectableModel newModel)
         {
-            this.Model = model;
+            this.Model = newModel;
         }
 
         public void SetView(ICollectableView collectableView)
@@ -23,21 +24,28 @@ namespace MazeMechanics
 
         public void UpdateView()
         {
-            if (this.Model?.CoinValue > 0) {
-                this.view.Enable();
-            }
-            else {
+            if (Model == null || Model.Treasure == TreasureKind.None) {
                 this.view.Disable();
+                return;
+            }
+            
+            switch (Model.Treasure) {
+                case TreasureKind.Coin:
+                    this.view.DrawCoin();
+                    break;
+                case TreasureKind.Chest:
+                    this.view.DrawChest();
+                    break;
+                default:
+                    this.view.Disable();
+                    Debug.LogError($"unimplemented case for {Model.Treasure}");
+                    break;
             }
         }
 
         private void OnCollectableTouched()
         {
-            this.view.Disable();
-            var coins = Model.CoinValue; 
-            Model.CoinValue = 0;
-            UpdateView();
-            Collected?.Invoke(this, coins);    
+            Collected?.Invoke(this);    
         }
     }
 }
