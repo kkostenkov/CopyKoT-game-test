@@ -148,7 +148,7 @@ RectTransform:
   m_AnchorMin: {x: 0.05, y: 0}
   m_AnchorMax: {x: 0.95, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5437621949665669311
 CanvasRenderer:
@@ -178,12 +178,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
+  m_text: 'Music: Swampyboy - Glacial Floe,from Free Music Archive. License CC BY-NC-ND
 
-    Font, icons by Kenney Vleugels (www.kenney.nl)  CC0 License
+    Font,
+    icons by Kenney Vleugels (www.kenney.nl)  CC0 License
 
-    Background
-    sprite by upklyak on Freepik'
+    Background sprite
+    by upklyak on Freepik'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
   m_sharedMaterial: {fileID: 2479807910111440191, guid: 81d412a99e2c24db6888c579d4d92432, type: 2}
@@ -218,7 +219,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
