@@ -1,6 +1,4 @@
-using Random = System.Random;
-
-namespace LevelMechanics.LevelMechanics.Cells
+namespace MazeMechanics.Cells
 {
     public static class MazeGenerator
     {
@@ -14,14 +12,14 @@ namespace LevelMechanics.LevelMechanics.Cells
                 }
             }
 
-            var random = new Random(seed);
+            var random = new System.Random(seed);
             
             GenerateMaze(maze, entryX, entryY, random);
             
             return maze;
         }
 
-        private static void GenerateMaze(bool[,] maze, int x, int y, Random random)
+        private static void GenerateMaze(bool[,] maze, int x, int y, System.Random random)
         {
             int[] directions = { 1, 2, 3, 4 };
             Shuffle(directions, random);
@@ -70,7 +68,7 @@ namespace LevelMechanics.LevelMechanics.Cells
             return maze[newX, newY];
         }
 
-        private static void Shuffle(int[] array, Random random)
+        private static void Shuffle(int[] array, System.Random random)
         {
             int n = array.Length;
             for (int i = 0; i < n; i++) {

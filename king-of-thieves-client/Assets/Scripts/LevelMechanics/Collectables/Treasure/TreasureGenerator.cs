@@ -1,13 +1,19 @@
-using System;
-using UnityEngine;
-using Random = System.Random;
+using MazeMechanics.Cells;
+using MazeMechanics.Random;
 
 namespace MazeMechanics
 {
     public class TreasureGenerator : ITreasureGenerator
     {
-        private const float ChestChancePercent = 10f;
-        private Random rand = new();
+        private ITreasureGenerationSettingsProvider settings;
+        private IRandomProvider random;
+
+        public TreasureGenerator(ITreasureGenerationSettingsProvider settings, IRandomProvider random)
+        {
+            this.random = random;
+            this.settings = settings;
+        }
+        
         public void TryAddTreasure(MazeCellModel cellModel)
         {
             if (!cellModel.CouldContainCollectables) {
@@ -23,6 +29,11 @@ namespace MazeMechanics
             return CreateTreasure();
         }
 
+        public void Clear(CollectableModel model)
+        {
+            model.Treasure = TreasureKind.None;
+        }
+
         private CollectableModel CreateEmpty()
         {
             return new CollectableModel() {
@@ -32,7 +43,8 @@ namespace MazeMechanics
 
         private CollectableModel CreateTreasure()
         {
-            var isChest = this.rand.Next(0, 100) < ChestChancePercent;
+            int percent = this.random.RollPercent();
+            var isChest = percent < settings.ChestChancePercent;
             if (isChest) {
                 return CreateChest();
             }
@@ -54,26 +66,6 @@ namespace MazeMechanics
                 Treasure = TreasureKind.Chest
             };
             return model;
-        }
-
-        public int GetCoinValue(CollectableModel model, int coinBalance)
-        {
-            switch (model.Treasure) {
-                case TreasureKind.None:
-                    return 0;
-                case TreasureKind.Coin:
-                    return 1;
-                case TreasureKind.Chest:
-                    return Math.Min(1, coinBalance / 10);
-                default:
-                    Debug.LogError($"missing case for {model.Treasure}");
-                    return 0;
-            }
-        }
-
-        public void Clear(CollectableModel model)
-        {
-            model.Treasure = TreasureKind.None;
         }
     }
 }

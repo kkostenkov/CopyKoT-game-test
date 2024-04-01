@@ -1,4 +1,4 @@
-namespace MazeMechanics
+namespace MazeMechanics.Cells
 {
     public class MazeCellModel
     {

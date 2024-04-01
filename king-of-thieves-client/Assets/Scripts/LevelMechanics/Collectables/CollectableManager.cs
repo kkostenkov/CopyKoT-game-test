@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LevelMechanics;
+using MazeMechanics.Cells;
 using MazeMechanics.Storage;
 
 namespace MazeMechanics
@@ -53,7 +54,7 @@ namespace MazeMechanics
 
         private void OnCollected(CollectablePresenter presenter)
         {
-            var coins = this.treasure.GetCoinValue(presenter.Model, CoinBalance);
+            var coins = ValueCalculator.GetCoinValue(presenter.Model, CoinBalance);
             Score(coins);
             this.treasure.Clear(presenter.Model);
             presenter.UpdateView();

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MazeMechanics
+namespace MazeMechanics.Cells
 {
     public class CellController
     {

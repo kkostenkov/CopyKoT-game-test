@@ -228,6 +228,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "net.tnrd.nsubstitute": {
+      "version": "file:net.tnrd.nsubstitute@449712b25a",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

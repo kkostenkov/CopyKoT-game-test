@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using MazeMechanics.Cells;
 
-namespace MazeMechanics
+namespace MazeMechanics.Cells
 {
     public interface IMazeCellViewFactory
     {

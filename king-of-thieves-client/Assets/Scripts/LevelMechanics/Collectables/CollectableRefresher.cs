@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MazeMechanics.Random;
 
 namespace MazeMechanics
 {
@@ -8,9 +9,14 @@ namespace MazeMechanics
         public event Action<CollectablePresenter> Refreshed;
         
         private readonly List<WaitingPresenter> waitingPresenters = new();
-        private readonly Random rand = new Random();
         private int minDelaySeconds = 200;
         private int maxDelaySeconds = 10000;
+        private IRandomProvider rand;
+
+        public CollectableRefresher(IRandomProvider random)
+        {
+            this.rand = random;
+        }
 
         public void Schedule(CollectablePresenter presenter)
         {
