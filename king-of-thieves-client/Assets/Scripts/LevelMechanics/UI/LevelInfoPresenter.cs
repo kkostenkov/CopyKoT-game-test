@@ -32,13 +32,13 @@ namespace LevelMechanics.UI
         private void OnSessionEnded()
         {
             var sessionScore = collectableManager.CoinBalance;
-            var maxScore = 0;
+            var maxScore = collectableManager.CoinsBest;
             this.view.ShowGameOver(sessionScore, maxScore);
         }
 
         private void OnMazeLoaded()
         {
-            var maxScore = 0;
+            var maxScore = collectableManager.CoinsBest;
             this.view.ShowWelcome(maxScore);
         }
 

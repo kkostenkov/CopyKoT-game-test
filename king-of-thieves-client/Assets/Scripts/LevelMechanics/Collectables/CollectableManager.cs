@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LevelMechanics;
 
 namespace MazeMechanics
 {
@@ -8,18 +9,20 @@ namespace MazeMechanics
         public const int DefaultCollectableValue = 1;
         
         public event Action<int> CoinBalanceUpdated;
-        public int CoinBalance {
-            get => this.collectedCoins;
-        }
+        public int CoinBalance { get; private set; }
+
+        public int CoinsBest { get; private set; }
 
         private readonly Dictionary<int, CollectablePresenter> presenters = new();
         private readonly CollectableRefresher refresher;
-        private int collectedCoins = 0;
+        private ILevelStateInfoProvider levelState;
 
-        public CollectableManager(CollectableRefresher refresher)
+        public CollectableManager(CollectableRefresher refresher, ILevelStateInfoProvider levelState)
         {
+            this.levelState = levelState;
             this.refresher = refresher;
             this.refresher.Refreshed += OnCollectableRefreshed;
+            this.levelState.SessionEnded += OnSessionEnded;
         }
 
         public CollectablePresenter GetPresenter(MazeCellModel model)
@@ -38,14 +41,19 @@ namespace MazeMechanics
                 presenter.Model.CoinValue = DefaultCollectableValue;
                 presenter.UpdateView();    
             }
-            this.collectedCoins = 0;
-            CoinBalanceUpdated?.Invoke(this.collectedCoins);
+            this.CoinBalance = 0;
+            CoinBalanceUpdated?.Invoke(this.CoinBalance);
         }
 
         private void OnCollected(CollectablePresenter presenter, int coins)
         {
             Score(coins);
             ScheduleRefresh(presenter);
+        }
+
+        private void OnSessionEnded()
+        {
+            CoinsBest = Math.Max(CoinsBest, CoinBalance);
         }
 
         private void ScheduleRefresh(CollectablePresenter presenter)
@@ -55,8 +63,8 @@ namespace MazeMechanics
 
         private void Score(int coins)
         {
-            this.collectedCoins += coins;
-            CoinBalanceUpdated?.Invoke(this.collectedCoins);
+            this.CoinBalance += coins;
+            CoinBalanceUpdated?.Invoke(this.CoinBalance);
         }
 
         private void OnCollectableRefreshed(CollectablePresenter presenter)

@@ -6,6 +6,7 @@ namespace MazeMechanics
     {
         event Action<int> CoinBalanceUpdated;
         int CoinBalance { get; }
+        int CoinsBest { get; }
         void Reset();
     }
 }
