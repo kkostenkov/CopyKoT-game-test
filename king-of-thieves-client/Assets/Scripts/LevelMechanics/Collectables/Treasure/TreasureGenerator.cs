@@ -1,7 +1,5 @@
-using System;
 using MazeMechanics.Cells;
 using MazeMechanics.Random;
-using UnityEngine;
 
 namespace MazeMechanics
 {
@@ -29,6 +27,11 @@ namespace MazeMechanics
         public CollectableModel GenerateTreasure()
         {
             return CreateTreasure();
+        }
+
+        public void Clear(CollectableModel model)
+        {
+            model.Treasure = TreasureKind.None;
         }
 
         private CollectableModel CreateEmpty()
@@ -63,26 +66,6 @@ namespace MazeMechanics
                 Treasure = TreasureKind.Chest
             };
             return model;
-        }
-
-        public int GetCoinValue(CollectableModel model, int coinBalance)
-        {
-            switch (model.Treasure) {
-                case TreasureKind.None:
-                    return 0;
-                case TreasureKind.Coin:
-                    return 1;
-                case TreasureKind.Chest:
-                    return Math.Min(1, coinBalance / 10);
-                default:
-                    Debug.LogError($"missing case for {model.Treasure}");
-                    return 0;
-            }
-        }
-
-        public void Clear(CollectableModel model)
-        {
-            model.Treasure = TreasureKind.None;
         }
     }
 }
