@@ -1,3 +1,5 @@
+using MazeMechanics.Cells;
+
 namespace MazeMechanics
 {
     internal interface ITreasureGenerator

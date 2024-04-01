@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LevelMechanics;
-using LevelMechanics.LevelMechanics.Cells;
+using MazeMechanics.Cells;
 
 namespace MazeMechanics
 {

@@ -1,4 +1,4 @@
-using LevelMechanics.LevelMechanics.Cells;
+using MazeMechanics.Cells;
 using UnityEditor;
 using UnityEngine;
 using Random = System.Random;

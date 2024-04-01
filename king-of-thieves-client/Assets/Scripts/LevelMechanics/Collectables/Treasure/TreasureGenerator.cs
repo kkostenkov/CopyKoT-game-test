@@ -1,13 +1,21 @@
 using System;
+using MazeMechanics.Cells;
+using MazeMechanics.Random;
 using UnityEngine;
-using Random = System.Random;
 
 namespace MazeMechanics
 {
     public class TreasureGenerator : ITreasureGenerator
     {
-        private const float ChestChancePercent = 10f;
-        private Random rand = new();
+        private ITreasureGenerationSettingsProvider settings;
+        private IRandomProvider random;
+
+        public TreasureGenerator(ITreasureGenerationSettingsProvider settings, IRandomProvider random)
+        {
+            this.random = random;
+            this.settings = settings;
+        }
+        
         public void TryAddTreasure(MazeCellModel cellModel)
         {
             if (!cellModel.CouldContainCollectables) {
@@ -32,7 +40,8 @@ namespace MazeMechanics
 
         private CollectableModel CreateTreasure()
         {
-            var isChest = this.rand.Next(0, 100) < ChestChancePercent;
+            int percent = this.random.RollPercent();
+            var isChest = percent < settings.ChestChancePercent;
             if (isChest) {
                 return CreateChest();
             }

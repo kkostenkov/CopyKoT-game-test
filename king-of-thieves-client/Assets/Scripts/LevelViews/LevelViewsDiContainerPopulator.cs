@@ -1,5 +1,6 @@
 using LevelMechanics;
 using MazeMechanics;
+using MazeMechanics.Cells;
 using TinyIoC;
 using UnityEngine;
 

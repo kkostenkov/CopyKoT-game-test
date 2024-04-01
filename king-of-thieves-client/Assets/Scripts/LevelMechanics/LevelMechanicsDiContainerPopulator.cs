@@ -1,6 +1,8 @@
 ﻿using Inputs;
 using LevelMechanics;
 using LevelMechanics.UI;
+using MazeMechanics.Cells;
+using MazeMechanics.Random;
 using MazeMechanics.Storage;
 using TinyIoC;
 
@@ -20,6 +22,7 @@ namespace MazeMechanics
             RegisterViewPresenters(container);
             
             container.Register<IScoreStorage, PlayerPrefsStorage>().AsSingleton();
+            container.Register<IRandomProvider, RandomProvider>().AsSingleton();
         }
 
         public override void RegisterMonobehListeners(MonoBehaviourMethodsCaller monoBehCaller)
@@ -50,8 +53,9 @@ namespace MazeMechanics
             container.Register<CollectableManager>().AsSingleton();
             container.Register<ICollectableManager>((c, p) => c.Resolve<CollectableManager>());
             container.Register<ICollectablePresenterFactory>((c, p) => c.Resolve<CollectableManager>());
-            
             container.Register<CollectableRefresher>().AsSingleton();
+            
+            container.Register<ITreasureGenerationSettingsProvider, TreasureGenerationSettingsProvider>().AsSingleton();
         }
 
         private static void RegisterViewPresenters(TinyIoCContainer container)
