@@ -79,7 +79,7 @@ namespace LevelMechanics
         {
             this.timer.Expired -= OnLevelTimeEnded;
             this.levelInfoPresenter.SessionStartRequested -= OnSessonStartRequested;
-            this.levelInfoPresenter.NewLevelRequested += OnNewLevelRequested;
+            this.levelInfoPresenter.NewLevelRequested -= OnNewLevelRequested;
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Views
     {
         private Transform selfTransform;
         private Vector3 initialPozition;
+        
         private void Awake()
         {
             selfTransform = this.transform;
