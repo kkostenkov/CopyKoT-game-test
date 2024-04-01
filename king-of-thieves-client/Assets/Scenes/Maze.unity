@@ -780,10 +780,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSessionView
       objectReference: {fileID: 0}
-    - target: {fileID: 9064857298495146038, guid: a81ad98c03d794bb9b92a23eabacce29, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

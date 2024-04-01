@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using LevelMechanics.UI;
 using MazeMechanics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelMechanics
 {
@@ -62,16 +63,23 @@ namespace LevelMechanics
             this.levelState.Set(LevelState.SessionStarted);
         }
 
+        private void OnNewLevelRequested()
+        {
+            SceneManager.LoadScene(0);
+        }
+
         private void Subscribe()
         {
             this.timer.Expired += OnLevelTimeEnded;
             this.levelInfoPresenter.SessionStartRequested += OnSessonStartRequested;
+            this.levelInfoPresenter.NewLevelRequested += OnNewLevelRequested;
         }
 
         private void Unsubscribe()
         {
             this.timer.Expired -= OnLevelTimeEnded;
             this.levelInfoPresenter.SessionStartRequested -= OnSessonStartRequested;
+            this.levelInfoPresenter.NewLevelRequested += OnNewLevelRequested;
         }
     }
 }
