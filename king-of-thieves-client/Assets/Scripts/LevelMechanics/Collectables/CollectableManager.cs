@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Audio;
 using LevelMechanics;
 using MazeMechanics.Cells;
 using MazeMechanics.Storage;
@@ -18,11 +19,13 @@ namespace MazeMechanics
         private readonly ILevelStateInfoProvider levelState;
         private readonly IScoreStorage storage;
         private readonly ITreasureGenerator treasure;
+        private readonly ISfxPlayer sfx;
 
         public CollectableManager(CollectableRefresher refresher, ILevelStateInfoProvider levelState, IScoreStorage storage,
-            ITreasureGenerator treasure)
+            ITreasureGenerator treasure, ISfxPlayer sfx)
         {
             this.treasure = treasure;
+            this.sfx = sfx;
             this.storage = storage;
             this.levelState = levelState;
             this.refresher = refresher;
@@ -33,7 +36,7 @@ namespace MazeMechanics
 
         public CollectablePresenter GetPresenter(MazeCellModel model)
         {
-            var presenter = new CollectablePresenter();
+            var presenter = new CollectablePresenter(sfx);
             presenter.SetModel(this.treasure.GenerateTreasure());
             presenter.Collected += OnCollected;
             this.presenters.Add(model.Id, presenter);

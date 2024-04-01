@@ -1,14 +1,20 @@
-
 using System;
+using Audio;
 using UnityEngine;
 
 namespace MazeMechanics
 {
     public class CollectablePresenter
     {
+        private readonly ISfxPlayer sfxPlayer;
         private ICollectableView view;
         public CollectableModel Model { get; private set; }
         public event Action<CollectablePresenter> Collected;
+
+        public CollectablePresenter(ISfxPlayer sfxPlayer)
+        {
+            this.sfxPlayer = sfxPlayer;
+        }
 
         public void SetModel(CollectableModel newModel)
         {
@@ -45,6 +51,7 @@ namespace MazeMechanics
 
         private void OnCollectableTouched()
         {
+            sfxPlayer.Play();
             Collected?.Invoke(this);    
         }
     }

@@ -1,3 +1,4 @@
+using Audio;
 using LevelMechanics;
 using LevelMechanics.UI;
 using TinyIoC;
@@ -11,6 +12,8 @@ public class UIViewsDiContainerPopulator : DiContainerPopulator
     private CoinsView coinsView;
     [SerializeField]
     private LevelTimeView levelTimeView;
+    [SerializeField]
+    private SoundSpeaker soundSpeaker;
 
     [SerializeField]
     private LevelUiManager uiManager;
@@ -21,5 +24,7 @@ public class UIViewsDiContainerPopulator : DiContainerPopulator
         container.Register<ICoinsView>(coinsView);
         container.Register<ILevelTimeView>(levelTimeView);
         container.Register<ILevelUiManager>(uiManager);
+        
+        container.Register<ISfxPlayer, SoundSpeaker>(soundSpeaker);
     }
 }

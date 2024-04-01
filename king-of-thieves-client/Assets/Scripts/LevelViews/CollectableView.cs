@@ -15,6 +15,7 @@ namespace Views
         private Sprite chest;
         
         public event Action Touched;
+        
         public void Disable()
         {
             this.gameObject.SetActive(false);

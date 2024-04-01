@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Audio
 {
-    public class SoundSpeaker : MonoBehaviour
+    public class SoundSpeaker : MonoBehaviour, ISfxPlayer
     {
         [SerializeField]
         private AudioSource audioSource;
@@ -11,5 +11,10 @@ namespace Audio
         {
             this.audioSource.Play();
         }
+    }
+
+    public interface ISfxPlayer
+    {
+        void Play();
     }
 }
