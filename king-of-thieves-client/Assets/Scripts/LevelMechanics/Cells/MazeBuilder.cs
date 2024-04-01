@@ -49,12 +49,13 @@ namespace MazeMechanics
             for (int y = 0; y < maze.GetLength(1); y++) {
                 for (int x = 0; x < maze.GetLength(0); x++) {
                     var isWall = maze[x, y];
+                    var isEntryCell = model.EntryX == x && model.EntryY == y;
                     var mazeCellModel = new MazeCellModel {
                         Id = x + (y * model.Width - 1),
                         X = x,
                         Y = y,
                         IsPassable = !isWall,
-                        CouldContainCollectables = !isWall,
+                        CouldContainCollectables = !isWall && !isEntryCell,
                     };
                     treasureGenerator.TryAddTreasure(mazeCellModel);
                     

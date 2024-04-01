@@ -10,7 +10,7 @@ public class GameSceneLoader : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         
-        var delay = Application.isEditor ? 0 : 0.5f;
+        var delay = 1f;
         await Task.Delay(TimeSpan.FromSeconds(delay));
 
         SceneManager.LoadScene(1);
