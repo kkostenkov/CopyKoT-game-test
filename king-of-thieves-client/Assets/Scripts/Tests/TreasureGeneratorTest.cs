@@ -33,7 +33,7 @@ public class TreasureGeneratorTest
     }
     
     [Test]
-    public void Should_LeaveEmpty_When_GivenTileThatCouLdNotContainCollectables()
+    public void Should_LeaveEmpty_When_GivenTileThatCouldNotContainCollectables()
     {
         var model = new MazeCellModel() {
             CouldContainCollectables = false,
@@ -66,12 +66,14 @@ public class TreasureGeneratorTest
     }
     
     [Test]
-    public void Should_LeaveNoTreasure_WhenAskedToClearModel()
+    public void Should_LeaveNoTreasure_When_AskedToClearModel()
     {
-        settings.ChestChancePercent.Returns(0);
+        var model = new CollectableModel() {
+            Treasure = TreasureKind.Chest,
+        };
         
-        var model = treasureGen.GenerateTreasure();
+        treasureGen.Clear(model);
         
-        Assert.IsTrue(model.Treasure == TreasureKind.Coin);
+        Assert.IsTrue(model.Treasure == TreasureKind.None);
     }
 }
