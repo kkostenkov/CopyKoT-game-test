@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace LevelMechanics.Settings
 {
@@ -11,15 +13,17 @@ namespace LevelMechanics.Settings
         
         public SettingsProvider()
         {
-            var handle = Addressables.LoadAssetAsync<GameSettingsScriptable>("GameSettings");
-            handle.WaitForCompletion();
-            var settings = handle.Result;
+            Addressables.LoadAssetsAsync<GameSettingsScriptable>("GameSettings", null).Completed += OnLoadDone;
+        }
+
+        private void OnLoadDone(AsyncOperationHandle<IList<GameSettingsScriptable>> handle)
+        {
+            var settings = handle.Result[0];
             ChestChancePercent = settings.ChestChancePercent;
             MinSpawnDelaySeconds = settings.MinSpawnDelaySeconds;
             MaxSpawnDelaySeconds = settings.MaxSpawnDelaySeconds;
             LevelTimeLimitSeconds = settings.LevelTimeLimitSeconds;
             Addressables.Release(handle);
-            // There is no reason now to play with async loading. 
         }
     }
 }
